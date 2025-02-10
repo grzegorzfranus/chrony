@@ -1,0 +1,8 @@
+---
+- name: upgrade | Upgrade chrony package to the latest version
+  ansible.builtin.package:
+    name: "{{ chrony_package_name }}"
+    state: latest
+    update_cache: true
+  become: true
+  notify: Handler | Restart chrony service

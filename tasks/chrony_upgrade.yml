@@ -1,9 +1,0 @@
-- name: chrony_upgrade | Upgrade chrony package to the latest version
-  package:
-    name: "{{ chrony_package_name }}" 
-    state: latest
-    update_cache: true
-  notify: Handler | Restart chrony service
-
-- name: chrony_upgrade | Flush handlers
-  meta: flush_handlers
