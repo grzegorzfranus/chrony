@@ -1,33 +1,33 @@
-- name: chrony_configure | Enable chrony service on system startup
-  service:
+- name: configure | Enable chrony service on system startup
+  ansible.builtin.service:
     name: "{{ chrony_service_name }}"
     enabled: true
   when: >
     chrony_service_enabled | default(false)
 
-- name: chrony_configure | Disable chrony service on system startup
-  service:
+- name: configure | Disable chrony service on system startup
+  ansible.builtin.service:
     name: "{{ chrony_service_name }}"
     enabled: false
   when: >
     not chrony_service_enabled | default(false)
-    
-- name: chrony_configure | Deploy chrony configuration file
-  template:
+
+- name: configure | Deploy chrony configuration file
+  ansible.builtin.template:
     src: "chrony/chrony.conf.j2"
     dest: "{{ chrony_config_path }}"
     mode: 0644
     owner: root
     group: root
-  notify: Handler | Restart chrony service
+  notify: handler | Restart chrony service
 
-- name: chrony_configure | Check whether the log directory exists
-  stat:
+- name: configure | Check whether the log directory exists
+  ansible.builtin.stat:
     path: "{{ chrony_logdir_path  }}"
   register: _log_directory_stat_
 
-- name: chrony_configure | Create log directory if does not exists
-  file:
+- name: configure | Create log directory if does not exists
+  ansible.builtin.file:
     path: "{{ chrony_logdir_path }}"
     state: directory
     mode: 0750
@@ -35,6 +35,3 @@
     owner: "{{ chrony_log_directory_user }}"
   when: >
     not _log_directory_stat_.stat.exists
-
-- name: chrony_configure | Flush handlers
-  meta: flush_handlers
