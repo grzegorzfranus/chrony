@@ -1,0 +1,27 @@
+galaxy_info:
+  role_name: chrony
+  author: Grzegorz Franus
+  description: Ansible role that installs chrony service as a client or server
+  license: MIT
+
+  min_ansible_version: "2.15"
+
+  platforms:
+    - name: Debian
+      versions:
+        - "bookworm"
+    - name: Ubuntu
+      versions:
+        - "jammy"
+    - name: EL
+      versions:
+        - "8"
+        - "9"
+
+  galaxy_tags:
+    - chrony
+    - time
+    - ntp
+    - timesync
+
+dependencies: []

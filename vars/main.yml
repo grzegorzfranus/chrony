@@ -1,0 +1,11 @@
+---
+### =======================
+### General variables for role
+
+# Chrony service name
+chrony_service_name: "chronyd"
+# Chrony package name
+chrony_package_name: "chrony"
+
+# logrotate related vars
+chrony_logrotate_config_path: "/etc/logrotate.d/chrony"

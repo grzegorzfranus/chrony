@@ -1,0 +1,45 @@
+name: Ansible Role CI
+
+on:
+  push:
+    branches:
+      - main
+      - "feature/*"
+      - "release/*"
+      - "bugfix/*"
+      - "hotfix/*"
+  pull_request:
+    branches:
+      - main
+      - "feature/*"
+      - "release/*"
+      - "bugfix/*"
+      - "hotfix/*"
+
+jobs:
+  lint:
+    name: Lint YAML and Ansible Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          path: "${{ github.repository }}"
+
+      - name: Switch to using Python 3.12 by default
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          pip3 install ansible yamllint ansible-lint
+
+      - name: Run Yamllint
+        run: yamllint "${{ github.repository }}"
+
+      - name: Run Ansible-Lint
+        run: |
+          cd "${{ github.repository }}"
+          ansible-lint ../.

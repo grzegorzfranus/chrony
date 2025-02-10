@@ -1,0 +1,82 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{{ ansible_managed | comment }}
+
+{% if chrony_ntp_servers is defined and chrony_ntp_servers|length > 0 %}
+# A list of servers to use with chrony and the options for each server
+{% endif %}
+{% for server in chrony_ntp_servers %}
+{% if server is mapping %}
+server {{ server.server_host }} {{ server.server_settings }}
+{% else %}
+server {{ server }} {{ chrony_global_server_settings|default('') }}
+{% endif %}
+{% endfor %}
+{% if chrony_ntp_pools is defined and chrony_ntp_pools|length > 0 %}
+
+# A list of pool of servers to use with chrony and the options for each server
+{% endif %}
+{% for pool in chrony_ntp_pools %}
+{% if pool is mapping %}
+pool {{ pool.pool_host }} {{ pool.pool_settings }}
+{% else %}
+pool {{ pool }} {{ chrony_global_pool_settings|default('') }}
+{% endif %}
+{% endfor %}
+{% if chrony_bind_addresses is defined and chrony_bind_addresses|length > 0 %}
+
+# The bindcmdaddress directive specifies a local IP address to which chronyd 
+# will bind the UDP socket listening for monitoring command packets (issued by chronyc)
+{% for bind_addr in chrony_bind_addresses %}
+bindcmdaddress {{ bind_addr }}
+{% endfor %}
+{% endif %}
+{% if chrony_driftfile_path is defined %}
+
+# Where to store the file that records the rate at which the system clock
+# gains/losses time.
+driftfile {{ chrony_driftfile_path }}
+{% endif %}
+{% if chrony_keyfile_path is defined %}
+
+# Specify path to the file containing keys for NTP authentication
+keyfile {{ chrony_keyfile_path }}
+{% endif %}
+{% if chrony_makestep is defined %}
+
+# Arguments for the makestep configuration option for chrony
+makestep {{ chrony_makestep }}
+{% endif %}
+{% if chrony_num_minsources is defined %}
+
+# Define the minimum number of selectable sources required to adjust the system clock
+minsources {{ chrony_num_minsources }}
+{% endif %}
+{% if chrony_rtc_settings is defined %}
+
+# Whether or not to enable kernel synchronization of the real-time clock (RTC)
+{{ chrony_rtc_settings|join("\n") }}
+{% endif %}
+{% if chrony_leapsectz_settings is defined %}
+
+# Get TAI-UTC offset and leap seconds from the system tz database.
+leapsectz {{ chrony_leapsectz_settings }}
+{% endif %}
+{% if chrony_logdir_path is defined %}
+
+# Specify path to the directory in which to store log files
+logdir {{ chrony_logdir_path }}
+{% endif %}
+{% if chrony_logged_information is defined %}
+
+# Select which information is logged
+log {{ chrony_logged_information }}
+{% endif %}
+{% if chrony_as_ntp_server|bool -%}
+{% if chrony_ntp_clients is defined and chrony_ntp_clients|length > 0 %}
+
+# Specify NTP clients
+{% for cients_args in chrony_ntp_clients %}
+allow {{ cients_args }}
+{% endfor %}
+{% endif %}
+{% endif %}

@@ -1,0 +1,53 @@
+---
+### =======================
+### General variables
+
+# Define role action
+chrony_role_action: "all"
+# Enable service on system startup
+chrony_service_enabled: true
+# Configure logrotate
+chrony_configure_logrotate: true
+
+# logrotate related vars
+chrony_logrotate_options:
+  archive_directory_path: "/var/log/chrony"
+  frequency: "daily"
+  count: 30
+  copytruncate: false
+
+### =======================
+### Configuration options for Chrony
+
+# Configure as a NTP server (set up also chrony_ntp_clients)
+chrony_as_ntp_server: false
+
+# A list of servers to use with chrony and the options for each server
+chrony_global_server_settings: "iburst minpoll 6 maxpoll 10"
+chrony_ntp_servers:
+  - 0.pl.pool.ntp.org
+  - 1.pl.pool.ntp.org
+  - 2.pl.pool.ntp.org
+# A list of pool of servers to use with chrony and the options for each server
+chrony_global_pool_settings: "iburst minpoll 6 maxpoll 10"
+chrony_ntp_pools: []
+# Whether or not to enable kernel synchronization of the real-time clock (RTC)
+chrony_rtc_settings:
+  - rtcsync
+# The bindcmdaddress directive specifies a local IP address to which chronyd 
+# will bind the UDP socket listening for monitoring command packets (issued by chronyc)
+chrony_bind_addresses:
+  - 127.0.0.1
+# Arguments for the makestep configuration option for chrony
+chrony_makestep_args: "1.0 3"
+# Define the minimum number of selectable sources required to adjust the system clock
+chrony_num_minsources: 1
+# Get TAI-UTC offset and leap seconds from the system tz database.
+chrony_leapsectz_settings: "right/UTC"
+# Specify path to the directory in which to store log files
+chrony_logdir_path: "/var/log/chrony"
+# Select which information is logged
+chrony_logged_information: "measurements statistics tracking"
+# Whether or not to enable kernel synchronization of the real-time clock (RTC)
+chrony_ntp_clients:
+  - 127.0.0.1

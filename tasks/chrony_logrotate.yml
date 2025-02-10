@@ -1,0 +1,18 @@
+- name: chrony_logrotate | Check whether the archive log directory exists
+  stat:
+    path: "{{ chrony_logrotate_options.archive_directory_path  }}"
+  register: _archive_log_directory_stat_
+
+- name: chrony_logrotate | Create archive log directory if does not exists
+  file:
+    path: "{{ chrony_logrotate_options.archive_directory_path }}"
+    state: directory
+  when: >
+    not _archive_log_directory_stat_.stat.exists
+
+- name: chrony_logrotate | Deploy logrotate config file for chrony
+  template:
+    src: "templates/logrotate/chrony.j2"
+    dest: "{{ chrony_logrotate_config_path }}"
+    owner: root
+    mode: 0644

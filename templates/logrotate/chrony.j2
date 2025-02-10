@@ -1,0 +1,24 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{{ ansible_managed | comment }}
+
+/var/log/chrony/*.log {
+  {{ chrony_logrotate_options.frequency }}
+  rotate {{ chrony_logrotate_options.count }}
+  missingok
+  compress
+  nocreate
+  {% if chrony_logrotate_options.copytruncate is true %}
+  # Add copytruncate option
+  copytruncate
+  {% endif %}
+  # Add date to archive log files
+  dateext
+  dateformat .%Y-%m-%d
+  # Archive log directory path
+  olddir {{ chrony_logrotate_options.archive_directory_path }}
+  # Run postrotate scripts if required
+  sharedscripts
+  postrotate
+    /usr/bin/chronyc cyclelogs > /dev/null 2>&1 || true
+  endscript
+}

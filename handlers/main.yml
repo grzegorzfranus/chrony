@@ -1,0 +1,4 @@
+- name: Handler | Restart chrony service
+  service:
+    name: "{{ chrony_service_name }}"
+    state: restarted
