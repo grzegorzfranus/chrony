@@ -1,0 +1,5 @@
+- name: install | Install chrony package
+  become: true
+  ansible.builtin.package:
+    name: "{{ chrony_package_name }}"
+    state: present

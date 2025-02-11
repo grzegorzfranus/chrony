@@ -1,4 +1,5 @@
-- name: lm_chrony | include_vars | Gather OS specific variables
+---
+- name: chrony | include_vars | Gather OS specific variables
   include_vars: "{{ lookup('first_found', params) }}"
   vars:
     params:
@@ -16,7 +17,7 @@
     - always
     - vars
 
-- name: lm_chrony | chrony_assert | Perform Conditional Tasks
+- name: chrony | chrony_assert | Perform Conditional Tasks
   import_tasks: chrony_assert.yml
   run_once: true
   delegate_to: localhost
@@ -24,54 +25,54 @@
     - always
     - asserts
 
-# - name: lm_chrony | chrony_requirements | Make sure that system meets requirements
-#   include_tasks: chrony_requirements.yml
-#   when: >
-#     chrony_role_action in ['all', 'requirements']
-#   tags:
-#     - always
-#     - requirements
+- name: chrony | chrony_requirements | Make sure that system meets requirements
+  include_tasks: chrony_requirements.yml
+  when: >
+    chrony_role_action in ['all', 'requirements']
+  tags:
+    - always
+    - requirements
 
-# - name: lm_chrony | chrony_install | Install chrony package
-#   include_tasks: chrony_install.yml
-#   when: >
-#     chrony_role_action in ['all', 'install']
-#   tags:
-#     - always
-#     - install
+- name: chrony | chrony_install | Install chrony package
+  include_tasks: chrony_install.yml
+  when: >
+    chrony_role_action in ['all', 'install']
+  tags:
+    - always
+    - install
 
-# - name: lm_chrony | chrony_configure | Configure chrony service 
-#   include_tasks: chrony_configure.yml
-#   when: >
-#     chrony_role_action in ['all', 'configure']
-#   tags:
-#     - always
-#     - configure
+- name: chrony | chrony_configure | Configure chrony service
+  include_tasks: chrony_configure.yml
+  when: >
+    chrony_role_action in ['all', 'configure']
+  tags:
+    - always
+    - configure
 
-# - name: lm_chrony | chrony_logrotate | Configure logrotate for chrony service
-#   include_tasks: chrony_logrotate.yml
-#   when: >
-#     chrony_role_action in ['all', 'configure', 'logrotate'] and 
-#     chrony_configure_logrotate | default(false)
-#   tags:
-#     - always
-#     - configure
-#     - logrotate
+- name: chrony | chrony_logrotate | Configure logrotate for chrony service
+  include_tasks: chrony_logrotate.yml
+  when: >
+    chrony_role_action in ['all', 'configure', 'logrotate'] and
+    chrony_configure_logrotate | default(false)
+  tags:
+    - always
+    - configure
+    - logrotate
 
-# - name: lm_chrony | chrony_upgrade | Upgrade chrony package
-#   include_tasks: chrony_upgrade.yml
-#   when: >
-#     chrony_role_action in ['upgrade']
-#   tags:
-#     - always
-#     - upgrade
+- name: chrony | chrony_upgrade | Upgrade chrony package
+  include_tasks: chrony_upgrade.yml
+  when: >
+    chrony_role_action in ['upgrade']
+  tags:
+    - always
+    - upgrade
 
-# - name: lm_chrony | chrony_test.yml | Make sure that time is synchronized with server
-#   include_tasks: chrony_test.yml
-#   when: >
-#     chrony_role_action in ['all', 'configure', 'upgrade', 'test']
-#   tags:
-#     - always
-#     - configure
-#     - upgrade
-#     - test
+- name: chrony | chrony_test.yml | Make sure that time is synchronized with server
+  include_tasks: chrony_test.yml
+  when: >
+    chrony_role_action in ['all', 'configure', 'upgrade', 'test']
+  tags:
+    - always
+    - configure
+    - upgrade
+    - test

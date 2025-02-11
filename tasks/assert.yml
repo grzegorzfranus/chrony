@@ -4,7 +4,7 @@
     that:
       - chrony_role_action is defined
       - chrony_role_action is string
-      - chrony_role_action in [ 
+      - chrony_role_action in [
         "all", "requirements", "install", "configure", "logrotate", "upgrade",
         "test"
         ]
@@ -39,7 +39,8 @@
       - chrony_as_ntp_server is boolean
     quiet: true
 
-- name: assert | Test if chrony_global_server_settings is defined and set correctly
+- name: assert | Test if chrony_global_server_settings is defined and set
+    correctly
   ansible.builtin.assert:
     that:
       - chrony_global_server_settings is defined
@@ -53,7 +54,8 @@
       - chrony_ntp_servers is iterable
     quiet: true
 
-- name: assert | Test if chrony_global_pool_settings is defined and set correctly
+- name: assert | Test if chrony_global_pool_settings is defined and set
+    correctly
   ansible.builtin.assert:
     that:
       - chrony_global_pool_settings is defined

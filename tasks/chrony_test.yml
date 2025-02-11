@@ -1,6 +1,0 @@
-- name: chrony_test | Force NTP sync
-  command: chronyc makestep
-
-- name: chrony_test | Ensure system is NTP time synced
-  command: chronyc waitsync 30
-  changed_when: false
