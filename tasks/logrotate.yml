@@ -1,3 +1,4 @@
+---
 - name: logrotate | Check whether the archive log directory exists
   ansible.builtin.stat:
     path: "{{ chrony_logrotate_options.archive_directory_path  }}"

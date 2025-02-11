@@ -1,7 +1,7 @@
 ---
 - name: requirements | Check if NTP service exists
   ansible.builtin.shell: >
-    systemctl is-active {{ chrony_ntp_service_name }}.service || 
+    systemctl is-active {{ chrony_ntp_service_name }}.service ||
     systemctl is-enabled {{ chrony_ntp_service_name }}.service
   register: _ntp_service_check_
   failed_when: false
@@ -19,12 +19,12 @@
 
 - name: requirements | Check if systemd-timesyncd service exists
   ansible.builtin.shell: >
-    systemctl is-active {{ chrony_systemd_timesyncd_service_name }}.service || 
+    systemctl is-active {{ chrony_systemd_timesyncd_service_name }}.service ||
     systemctl is-enabled {{ chrony_systemd_timesyncd_service_name }}.service
   register: _systemd_timesyncd_service_check_
   failed_when: false
   changed_when: false
-  
+
 - name: requirements | Stop and disable systemd-timesyncd service
   ansible.builtin.service:
       name: "{{ chrony_systemd_timesyncd_service_name }}"
