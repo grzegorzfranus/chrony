@@ -1,4 +1,5 @@
 - name: handler | Restart chrony service
+  become: true
   ansible.builtin.service:
     name: "{{ chrony_service_name }}"
     state: restarted

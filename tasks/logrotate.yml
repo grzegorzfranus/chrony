@@ -5,6 +5,7 @@
   register: _archive_log_directory_stat_
 
 - name: logrotate | Create archive log directory if does not exists
+  become: true
   ansible.builtin.file:
     path: "{{ chrony_logrotate_options.archive_directory_path }}"
     state: directory
@@ -12,6 +13,7 @@
     not _archive_log_directory_stat_.stat.exists
 
 - name: logrotate | Deploy logrotate config file for chrony
+  become: true
   ansible.builtin.template:
     src: "templates/logrotate/chrony.j2"
     dest: "{{ chrony_logrotate_config_path }}"

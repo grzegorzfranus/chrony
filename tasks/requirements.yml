@@ -8,6 +8,7 @@
   changed_when: false
 
 - name: requirements | Stop and disable NTP service
+  become: true
   ansible.builtin.service:
       name: "{{ chrony_ntp_service_name }}"
       state: stopped
@@ -26,6 +27,7 @@
   changed_when: false
 
 - name: requirements | Stop and disable systemd-timesyncd service
+  become: true
   ansible.builtin.service:
       name: "{{ chrony_systemd_timesyncd_service_name }}"
       state: stopped

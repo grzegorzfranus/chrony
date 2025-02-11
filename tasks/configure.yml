@@ -1,5 +1,6 @@
 ---
 - name: configure | Enable chrony service on system startup
+  become: true
   ansible.builtin.service:
     name: "{{ chrony_service_name }}"
     enabled: true
@@ -7,6 +8,7 @@
     chrony_service_enabled | default(false)
 
 - name: configure | Disable chrony service on system startup
+  become: true
   ansible.builtin.service:
     name: "{{ chrony_service_name }}"
     enabled: false
@@ -14,6 +16,7 @@
     not chrony_service_enabled | default(false)
 
 - name: configure | Deploy chrony configuration file
+  become: true
   ansible.builtin.template:
     src: "chrony/chrony.conf.j2"
     dest: "{{ chrony_config_path }}"
@@ -24,10 +27,11 @@
 
 - name: configure | Check whether the log directory exists
   ansible.builtin.stat:
-    path: "{{ chrony_logdir_path  }}"
+    path: "{{ chrony_logdir_path }}"
   register: _log_directory_stat_
 
 - name: configure | Create log directory if does not exists
+  become: true
   ansible.builtin.file:
     path: "{{ chrony_logdir_path }}"
     state: directory
