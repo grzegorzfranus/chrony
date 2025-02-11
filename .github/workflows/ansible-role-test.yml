@@ -36,13 +36,11 @@ jobs:
         run: |
           pip3 install ansible yamllint ansible-lint
 
-      - name: Run Yamllint
+      - name: Run Yamllint test
         run: |
-          pwd
-          ls -la
           yamllint -c "${{ github.repository }}/.yamllint" "${{ github.repository }}"
 
-      - name: Run Ansible-Lint
+      - name: Run Ansible-Lint test
         run: |
           cd "${{ github.repository }}"
           ansible-lint ../.

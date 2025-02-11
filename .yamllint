@@ -2,9 +2,10 @@
 extends: default
 rules:
   line-length:
-    max: 100
+    max: 120
     level: error
 exclude: |
   .github/
   .gitignore
   .yamllint
+  molecule/

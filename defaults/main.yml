@@ -34,7 +34,7 @@ chrony_ntp_pools: []
 # Whether or not to enable kernel synchronization of the real-time clock (RTC)
 chrony_rtc_settings:
   - rtcsync
-# The bindcmdaddress directive specifies a local IP address to which chronyd 
+# The bindcmdaddress directive specifies a local IP address to which chronyd
 # will bind the UDP socket listening for monitoring command packets (issued by chronyc)
 chrony_bind_addresses:
   - 127.0.0.1
