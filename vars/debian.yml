@@ -1,22 +1,23 @@
 ---
-### =======================
-### Debian specified variables
+# ================================================================
+# Ansible Variables - Debian Family Variables
+# ================================================================
+# This file defines Debian Family variables Chrony NTP service settings and related parameters.
+# Sections:
+#   1. General Settings
+#   2. NTP Server Settings
+# ================================================================
 
-# NTP service name
+# ------------------------------------------------
+# 1. General Settings
+# ------------------------------------------------
 chrony_ntp_service_name: "ntp"
-# systemd-timesyncd service name
 chrony_systemd_timesyncd_service_name: "systemd-timesyncd"
-# Chrony config file location
 chrony_config_path: "/etc/chrony/chrony.conf"
-# log file user / log directory owner
 chrony_log_directory_user: "_chrony"
 
-
-### =======================
-### Configuration options for Chrony
-
-# Where to store the file that records the rate at which the system clock
-# gains/losses time.
+# ------------------------------------------------
+# 3. NTP Server Settings
+# ------------------------------------------------
 chrony_driftfile_path: "/var/lib/chrony/chrony.drift"
-# Specify path to the file containing keys for NTP authentication
 chrony_keyfile_path: "/etc/chrony/chrony.keys"
