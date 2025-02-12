@@ -20,7 +20,7 @@
   ansible.builtin.template:
     src: "chrony/chrony.conf.j2"
     dest: "{{ chrony_config_path }}"
-    mode: 0644
+    mode: "0644"
     owner: root
     group: root
   notify: handler | Restart chrony service
@@ -35,7 +35,7 @@
   ansible.builtin.file:
     path: "{{ chrony_logdir_path }}"
     state: directory
-    mode: 0750
+    mode: "0750"
     group: "{{ chrony_log_directory_user }}"
     owner: "{{ chrony_log_directory_user }}"
   when: >
