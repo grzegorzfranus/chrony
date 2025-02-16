@@ -18,7 +18,7 @@ on:
 
 jobs:
   lint:
-    name: Lint YAML and Ansible Code
+    name: Check Ansible Code
     runs-on: ubuntu-latest
 
     steps:
@@ -44,3 +44,35 @@ jobs:
         run: |
           cd "${{ github.repository }}"
           ansible-lint ../.
+
+  build:
+    name: Run Molecule Tests
+    runs-on: ubuntu-latest
+    needs: lint
+    env:
+      FORCE_COLOR: 1
+      PY_COLORS: 1
+      ANSIBLE_CALLBACK_WHITELIST: profile_tasks
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Ensure roles directory exists
+        run: mkdir -p molecule/default/roles
+
+      - name: Link role to roles directory
+        run: ln -s ${{ github.workspace }} molecule/default/roles/chrony
+
+      - name: Switch to using Python 3 by default
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Dependencies
+        run: |
+          pip3 install molecule-plugins[docker] ansible-lint testinfra yamllint
+
+      - name: Run Molecule Tests
+        run: |
+          molecule test
