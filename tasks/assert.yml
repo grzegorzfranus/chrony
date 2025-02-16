@@ -1,5 +1,5 @@
 ---
-- name: assert | Test if chrony_role_action is defined 
+- name: assert | Test if chrony_role_action is defined
   ansible.builtin.assert:
     that:
       - chrony_role_action is defined
