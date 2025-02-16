@@ -15,7 +15,6 @@
 chrony_role_action: "all"
 chrony_service_enabled: true
 chrony_configure_logrotate: true
-chrony_as_ntp_server: false
 
 # ------------------------------------------------
 # 2. Logrotate Settings
@@ -29,20 +28,22 @@ chrony_logrotate_options:
 # ------------------------------------------------
 # 3. NTP Server Settings
 # ------------------------------------------------
-chrony_global_server_settings: "iburst minpoll 6 maxpoll 10"
+chrony_ntp_source_mode: "server"
 chrony_ntp_servers:
-  - 0.pool.ntp.org
-  - 1.pool.ntp.org
-chrony_global_pool_settings: "iburst minpoll 6 maxpoll 10"
-chrony_ntp_pools: []
-chrony_rtc_settings:
-  - rtcsync
-chrony_bind_addresses:
-  - 127.0.0.1
-chrony_makestep_args: "1.0 3"
+  - "0.pool.ntp.org iburst minpoll 4 maxpoll 8"
+  - "1.pool.ntp.org iburst minpoll 4 maxpoll 8"
+  - "2.pool.ntp.org iburst minpoll 4 maxpoll 8"
+  - "3.pool.ntp.org iburst minpoll 4 maxpoll 8"
+chrony_rtcsync_enable: true
+chrony_maxdistance: 3.0
+chrony_ntsdumpdir: "/var/lib/chrony"
 chrony_num_minsources: 1
-chrony_leapsectz_settings: "right/UTC"
+chrony_maxupdateskew: 100.0
+chrony_makestep: "1.0 3"
+chrony_logchange: "0.5"
+chrony_leapsectz: "right/UTC"
+chrony_log_enable: true
 chrony_logdir_path: "/var/log/chrony"
-chrony_logged_information: "measurements statistics tracking"
-chrony_ntp_clients:
-  - 127.0.0.1
+chrony_log_options: "measurements statistics tracking"
+# chrony_ntp_clients:
+#   - 127.0.0.1

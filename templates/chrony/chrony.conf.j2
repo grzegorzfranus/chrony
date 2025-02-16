@@ -1,82 +1,78 @@
 #jinja2: trim_blocks: True, lstrip_blocks: True
 {{ ansible_managed | comment }}
 
-{% if chrony_ntp_servers is defined and chrony_ntp_servers|length > 0 %}
-# A list of servers to use with chrony and the options for each server
-{% endif %}
-{% for server in chrony_ntp_servers %}
-{% if server is mapping %}
-server {{ server.server_host }} {{ server.server_settings }}
-{% else %}
-server {{ server }} {{ chrony_global_server_settings|default('') }}
-{% endif %}
-{% endfor %}
-{% if chrony_ntp_pools is defined and chrony_ntp_pools|length > 0 %}
+# /etc/chrony/chrony.conf
+# This configuration file is optimized for accuracy, security, and stability.
 
-# A list of pool of servers to use with chrony and the options for each server
-{% endif %}
-{% for pool in chrony_ntp_pools %}
-{% if pool is mapping %}
-pool {{ pool.pool_host }} {{ pool.pool_settings }}
-{% else %}
-pool {{ pool }} {{ chrony_global_pool_settings|default('') }}
-{% endif %}
-{% endfor %}
-{% if chrony_bind_addresses is defined and chrony_bind_addresses|length > 0 %}
-
-# The bindcmdaddress directive specifies a local IP address to which chronyd 
-# will bind the UDP socket listening for monitoring command packets (issued by chronyc)
-{% for bind_addr in chrony_bind_addresses %}
-bindcmdaddress {{ bind_addr }}
+# Define reliable NTP server pools for synchronization
+{% if chrony_ntp_source_mode is defined and chrony_ntp_source_mode == "pool" %}
+{% for i in chrony_ntp_servers %}
+pool {{ i }}
 {% endfor %}
 {% endif %}
-{% if chrony_driftfile_path is defined %}
+{% if chrony_ntp_source_mode is defined and chrony_ntp_source_mode == "server" %}
+{% for i in chrony_ntp_servers %}
+server {{ i }}
+{% endfor %}
+{% endif %}
 
-# Where to store the file that records the rate at which the system clock
-# gains/losses time.
+# Path to the drift file to store clock drift information
+# Helps chrony adjust the system clock more efficiently
 driftfile {{ chrony_driftfile_path }}
-{% endif %}
-{% if chrony_keyfile_path is defined %}
+{% if chrony_rtcsync_enable %}
 
-# Specify path to the file containing keys for NTP authentication
-keyfile {{ chrony_keyfile_path }}
+# Enable real-time clock synchronization on system boot
+rtcsync
 {% endif %}
-{% if chrony_makestep is defined %}
 
-# Arguments for the makestep configuration option for chrony
+# Adjust the system clock immediately if the offset exceeds 1 second (up to 3 times)
 makestep {{ chrony_makestep }}
-{% endif %}
-{% if chrony_num_minsources is defined %}
 
-# Define the minimum number of selectable sources required to adjust the system clock
+# Path to the authentication key file
+# Used for securing time synchronization sessions
+keyfile {{ chrony_keyfile_path }}
+
+# Define the command key ID used for administrative commands
+commandkey 1
+
+# Generate a random command key for additional security
+generatecommandkey
+
+# Directory where Network Time Security (NTS) dump files are stored
+ntsdumpdir {{ chrony_ntsdumpdir }}
+
+# Maximum distance (round-trip delay) to trusted sources
+# Helps in filtering unreliable time sources
+maxdistance {{ chrony_maxdistance }}
+
+# Minimum number of sources required for synchronization
+# Ensures at least one valid time source before making adjustments
 minsources {{ chrony_num_minsources }}
-{% endif %}
-{% if chrony_rtc_settings is defined %}
 
-# Whether or not to enable kernel synchronization of the real-time clock (RTC)
-{{ chrony_rtc_settings|join("\n") }}
-{% endif %}
-{% if chrony_leapsectz_settings is defined %}
+# Maximum allowed update skew before discarding a source
+# Prevents unreliable sources from affecting system time
+maxupdateskew {{ chrony_maxupdateskew }}
 
-# Get TAI-UTC offset and leap seconds from the system tz database.
-leapsectz {{ chrony_leapsectz_settings }}
-{% endif %}
-{% if chrony_logdir_path is defined %}
+# Log changes to system clock adjustments larger than the given threshold
+# Helps monitor sudden clock changes
+logchange {{ chrony_logchange }}
 
-# Specify path to the directory in which to store log files
+# Enable leap second handling based on the specified timezone
+# Ensures proper handling of leap seconds
+leapsectz {{ chrony_leapsectz }}
+{% if chrony_log_enable %}
+
+# Enable logging for measurements, statistics, and tracking
+log {{ chrony_log_options }}
+
+# Specify directory for chrony logs
 logdir {{ chrony_logdir_path }}
 {% endif %}
-{% if chrony_logged_information is defined %}
-
-# Select which information is logged
-log {{ chrony_logged_information }}
-{% endif %}
-{% if chrony_as_ntp_server|bool -%}
 {% if chrony_ntp_clients is defined and chrony_ntp_clients|length > 0 %}
 
-# Specify NTP clients
-{% for cients_args in chrony_ntp_clients %}
-allow {{ cients_args }}
+# Allow time synchronization requests from a specific trusted IP address
+# Restricts external access to trusted sources
+{% for client in chrony_ntp_clients %}
+allow {{ client }}
 {% endfor %}
-{% endif %}
 {% endif %}

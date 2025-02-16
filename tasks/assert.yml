@@ -1,5 +1,5 @@
 ---
-- name: assert | Test if chrony_role_action is defined
+- name: assert | Test if chrony_role_action is defined 
   ansible.builtin.assert:
     that:
       - chrony_role_action is defined
@@ -32,19 +32,12 @@
   when: >
     chrony_configure_logrotate | default(false)
 
-- name: assert | Test if chrony_as_ntp_server is defined and set correctly
+- name: assert | Test if chrony_ntp_source_mode is defined and set correctly
   ansible.builtin.assert:
     that:
-      - chrony_as_ntp_server is defined
-      - chrony_as_ntp_server is boolean
-    quiet: true
-
-- name: assert | Test if chrony_global_server_settings is defined and set
-    correctly
-  ansible.builtin.assert:
-    that:
-      - chrony_global_server_settings is defined
-      - chrony_global_server_settings is string
+      - chrony_ntp_source_mode is defined
+      - chrony_ntp_source_mode in [ "pool", "server" ]
+    fail_msg: "'chrony_ntp_source_mode' must be 'pool' or 'server"
     quiet: true
 
 - name: assert | Test if chrony_ntp_servers is defined and set correctly
@@ -54,46 +47,64 @@
       - chrony_ntp_servers is iterable
     quiet: true
 
-- name: assert | Test if chrony_global_pool_settings is defined and set
+- name: assert | Test if chrony_rtcsync_enable is defined and set
     correctly
   ansible.builtin.assert:
     that:
-      - chrony_global_pool_settings is defined
-      - chrony_global_pool_settings is string
+      - chrony_rtcsync_enable is defined
+      - chrony_rtcsync_enable is boolean
     quiet: true
 
-- name: assert | Test if chrony_rtc_settings is defined and set correctly
+- name: assert | Test if chrony_maxdistance is defined and set correctly
   ansible.builtin.assert:
     that:
-      - chrony_rtc_settings is defined
-      - chrony_rtc_settings is iterable
+      - chrony_maxdistance is defined
     quiet: true
 
-- name: assert | Test if chrony_bind_addresses is defined and set correctly
+- name: assert | Test if chrony_ntsdumpdir is defined and set correctly
   ansible.builtin.assert:
     that:
-      - chrony_bind_addresses is defined
-      - chrony_bind_addresses is iterable
-    quiet: true
-
-- name: assert | Test if chrony_makestep_args is defined and set correctly
-  ansible.builtin.assert:
-    that:
-      - chrony_makestep_args is defined
-      - chrony_makestep_args is string
+      - chrony_ntsdumpdir is defined
+      - chrony_ntsdumpdir is string
     quiet: true
 
 - name: assert | Test if chrony_num_minsources is defined and set correctly
   ansible.builtin.assert:
     that:
       - chrony_num_minsources is defined
+      - chrony_num_minsources is number
     quiet: true
 
-- name: assert | Test if chrony_leapsectz_settings is defined and set correctly
+- name: assert | Test if chrony_maxupdateskew is defined and set correctly
   ansible.builtin.assert:
     that:
-      - chrony_leapsectz_settings is defined
-      - chrony_leapsectz_settings is string
+      - chrony_maxupdateskew is defined
+    quiet: true
+
+- name: assert | Test if chrony_makestep is defined and set correctly
+  ansible.builtin.assert:
+    that:
+      - chrony_makestep is defined
+    quiet: true
+
+- name: assert | Test if chrony_logchange is defined and set correctly
+  ansible.builtin.assert:
+    that:
+      - chrony_logchange is defined
+    quiet: true
+
+- name: assert | Test if chrony_leapsectz is defined and set correctly
+  ansible.builtin.assert:
+    that:
+      - chrony_leapsectz is defined
+      - chrony_leapsectz is string
+    quiet: true
+
+- name: assert | Test if chrony_log_enable is defined and set correctly
+  ansible.builtin.assert:
+    that:
+      - chrony_log_enable is defined
+      - chrony_log_enable is boolean
     quiet: true
 
 - name: assert | Test if chrony_logdir_path is defined and set correctly
@@ -103,16 +114,9 @@
       - chrony_logdir_path is string
     quiet: true
 
-- name: assert | Test if chrony_logged_information is defined and set correctly
+- name: assert | Test if chrony_log_options is defined and set correctly
   ansible.builtin.assert:
     that:
-      - chrony_logged_information is defined
-      - chrony_logged_information is string
-    quiet: true
-
-- name: assert | Test if chrony_ntp_clients is defined and set correctly
-  ansible.builtin.assert:
-    that:
-      - chrony_ntp_clients is defined
-      - chrony_ntp_clients is iterable
+      - chrony_log_options is defined
+      - chrony_log_options is string
     quiet: true

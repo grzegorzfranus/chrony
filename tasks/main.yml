@@ -17,40 +17,40 @@
     - always
     - vars
 
-- name: chrony | chrony_assert | Perform Conditional Tasks
-  import_tasks: chrony_assert.yml
+- name: chrony | assert | Perform Conditional Tasks
+  import_tasks: assert.yml
   run_once: true
   delegate_to: localhost
   tags:
     - always
     - asserts
 
-- name: chrony | chrony_requirements | Make sure that system meets requirements
-  include_tasks: chrony_requirements.yml
+- name: chrony | requirements | Make sure that system meets requirements
+  include_tasks: requirements.yml
   when: >
     chrony_role_action in ['all', 'requirements']
   tags:
     - always
     - requirements
 
-- name: chrony | chrony_install | Install chrony package
-  include_tasks: chrony_install.yml
+- name: chrony | install | Install chrony package
+  include_tasks: install.yml
   when: >
     chrony_role_action in ['all', 'install']
   tags:
     - always
     - install
 
-- name: chrony | chrony_configure | Configure chrony service
-  include_tasks: chrony_configure.yml
+- name: chrony | configure | Configure chrony service
+  include_tasks: configure.yml
   when: >
     chrony_role_action in ['all', 'configure']
   tags:
     - always
     - configure
 
-- name: chrony | chrony_logrotate | Configure logrotate for chrony service
-  include_tasks: chrony_logrotate.yml
+- name: chrony | logrotate | Configure logrotate for chrony service
+  include_tasks: logrotate.yml
   when: >
     chrony_role_action in ['all', 'configure', 'logrotate'] and
     chrony_configure_logrotate | default(false)
@@ -59,16 +59,16 @@
     - configure
     - logrotate
 
-- name: chrony | chrony_upgrade | Upgrade chrony package
-  include_tasks: chrony_upgrade.yml
+- name: chrony | upgrade | Upgrade chrony package
+  include_tasks: upgrade.yml
   when: >
     chrony_role_action in ['upgrade']
   tags:
     - always
     - upgrade
 
-- name: chrony | chrony_test.yml | Make sure that time is synchronized with server
-  include_tasks: chrony_test.yml
+- name: chrony | test | Make sure that time is synchronized with server
+  include_tasks: test.yml
   when: >
     chrony_role_action in ['all', 'configure', 'upgrade', 'test']
   tags:
