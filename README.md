@@ -2,11 +2,13 @@
 [![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/grzegorzfranus/chrony/releases)
 [![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ci.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)
  
+https://img.shields.io/github/actions/workflow/status/grzegorzfranus/chrony/ci.yml?branch=main
+
 ## Overview
 
 |GitHub|Version|
 |------|-------|
-|[![github](https://github.com/grzegorzfranus/chrony/workflows/pipeline.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/release/grzegorzfranus/chrony.svg)](https://github.com/grzegorzfranus/chrony/releases)|
+|[![Build Status](https://github.com/grzegorzfranus/chrony/workflows/pipeline.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|
 
 
 Ansible role that installs chrony as a client or server.
