@@ -6,7 +6,7 @@
 
 |GitHub|Version|
 |------|-------|
-|[![github](https://github.com/grzegorzfranus/chrony/actions/workflows/molecule-test.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/release/grzegorzfranus/chrony.svg)](https://github.com/grzegorzfranus/chrony/releases/)|
+|[![github](https://github.com/grzegorzfranus/chrony/workflows/Ansible%20Molecule/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/release/grzegorzfranus/chrony.svg)](https://github.com/grzegorzfranus/chrony/releases/)|
 
 
 Ansible role that installs chrony as a client or server.
