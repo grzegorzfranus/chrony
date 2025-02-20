@@ -1,9 +1,6 @@
 # Ansible role: chrony
----
-
-|GitHub|Version|
-|------|-------|
-|[![github](https://github.com/grzegorzfranus/chrony/actions/workflows/molecule-test.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/release/grzegorzfranus/web.svg)](https://github.com/grzegorzfranus/chrony/releases/)|
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/grzegorzfranus/Ansible/releases)
+[![Build Status](https://github.com/grzegorzfranus/Ansible/workflows/CI/badge.svg)](https://github.com/grzegorzfranus/Ansible/actions)
 
 ## Overview
 
@@ -78,5 +75,7 @@ Using the role is fairly straightforward:
 ```
 
 ## Author Information
+
+<vscode_annotation details='%5B%7B%22title%22%3A%22hardcoded-credentials%22%2C%22description%22%3A%22Embedding%20credentials%20in%20source%20code%20risks%20unauthorized%20access%22%7D%5D'></vscode_annotation>Grzegorz Franus
 
 **Grzegorz Franus**
