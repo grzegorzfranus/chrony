@@ -1,7 +1,7 @@
 # Ansible role: chrony
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/grzegorzfranus/Ansible/releases)
-[![Build Status](https://github.com/grzegorzfranus/Ansible/workflows/CI/badge.svg)](https://github.com/grzegorzfranus/Ansible/actions)
-
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/grzegorzfranus/chrony/releases)
+[![Build Status](https://github.com/grzegorzfranus/chrony/workflows/CI/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)
+ 
 ## Overview
 
 Ansible role that installs chrony as a client or server.
@@ -58,6 +58,7 @@ This role has no dependencies.
 ## Licenses
 
 MIT
+[Apache-2.0](https://github.com/robertdebock/ansible-role-update/blob/master/LICENSE).
 
 ## Example Playbook
 
