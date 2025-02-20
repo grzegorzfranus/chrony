@@ -1,6 +1,7 @@
 # Ansible role: chrony
 [![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/grzegorzfranus/chrony/releases)
 [![Build Status](https://github.com/grzegorzfranus/chrony/workflows/CI/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)
+![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ci.yml/badge.svg)
  
 ## Overview
 
