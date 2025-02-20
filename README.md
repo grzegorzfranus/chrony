@@ -1,7 +1,15 @@
 # Ansible role: chrony
 ---
 
+|GitHub|Version|
+|------|-------|
+|[![github](https://github.com/grzegorzfranus/chrony/actions/workflows/molecule-test.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/release/grzegorzfranus/web.svg)](https://github.com/grzegorzfranus/chrony/releases/)|
+
+## Overview
+
 Ansible role that installs chrony as a client or server.
+
+chronyd is a daemon for synchronisation of the system clock. It can synchronise the clock with NTP servers, reference clocks (e.g. a GPS receiver), and manual input using wristwatch and keyboard via chronyc. It can also operate as an NTPv4 (RFC 5905) server and peer to provide a time service to other computers in the network.
 
 ## Main actions
 
@@ -10,6 +18,10 @@ Ansible role that installs chrony as a client or server.
 * (Optional) Set up logrotate for Chrony.
 * Upgrade Chrony package.
 * Test if Chrony is synchronized with declared server(s).
+
+## Version
+
+- `v1.0.0` - initial version  
 
 ## Requirements
 
