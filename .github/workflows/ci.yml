@@ -1,4 +1,4 @@
-name: Ansible Role CI
+name: ci
 
 on:
   push:

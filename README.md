@@ -59,8 +59,7 @@ This role has no dependencies.
 
 ## Licenses
 
-MIT
-[Apache-2.0](https://github.com/robertdebock/ansible-role-update/blob/master/LICENSE).
+[Apache-2.0](https://github.com/grzegorzfranus/chrony/blob/main/LICENSE).
 
 ## Example Playbook
 
@@ -78,7 +77,5 @@ Using the role is fairly straightforward:
 ```
 
 ## Author Information
-
-<vscode_annotation details='%5B%7B%22title%22%3A%22hardcoded-credentials%22%2C%22description%22%3A%22Embedding%20credentials%20in%20source%20code%20risks%20unauthorized%20access%22%7D%5D'></vscode_annotation>Grzegorz Franus
 
 **Grzegorz Franus**
