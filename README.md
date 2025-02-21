@@ -1,7 +1,7 @@
 # Ansible role: chrony
 
 |Lint|Molecule|Version|
-|------|-------|
+|------|-------|-------|
 |[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ci.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ci.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|
 
 ## Overview
@@ -14,7 +14,7 @@ chronyd is a daemon for synchronisation of the system clock. It can synchronise 
 
 * Install Chrony package.
 * Configure Chrony service as a client or server.
-* (Optional) Set up logrotate for Chrony.
+* Set up logrotate for Chrony (optional).
 * Upgrade Chrony package.
 * Test if Chrony is synchronized with declared server(s).
 
