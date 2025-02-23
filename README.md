@@ -1,17 +1,14 @@
 # Ansible role: chrony
 
-|Version|Molecule|Version|License|
+|Version|Tests|License|Code style|
 |------|-------|-------|-------|
-|[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ansible-molecule.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|[![Repository License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)|
-
-
-
+|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|[![Tests](https://github.com/grzegorzfranus/chrony/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Repository License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)|[![Python Black Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)|
 
 ## Overview
 
 Ansible role that installs chrony as a client or server.
 
-chronyd is a daemon for synchronisation of the system clock. It can synchronise the clock with NTP servers, reference clocks (e.g. a GPS receiver), and manual input using wristwatch and keyboard via chronyc. It can also operate as an NTPv4 (RFC 5905) server and peer to provide a time service to other computers in the network.
+Chronyd is a daemon for synchronisation of the system clock. It can synchronise the clock with NTP servers, reference clocks (e.g. a GPS receiver), and manual input using wristwatch and keyboard via chronyc. It can also operate as an NTPv4 (RFC 5905) server and peer to provide a time service to other computers in the network.
 
 ## Main actions
 
@@ -39,14 +36,7 @@ Python >= 3.9
 The role uses facts gathered by Ansible on the remote host. If you disable the Setup module in your playbook, the role will not work properly.
 
 #### Root access
-This role requires root access, so either configure it in your inventory files, run it in a playbook with a global `become: true` or invoke the role in your playbook like:
-> site.yml:
-```yaml
-- hosts: servers
-  become: true
-  roles:
-    - role: chrony
-```
+This role requires root access for some tasks. Make sure that you are using a user with root privileges.
 
 ## Role Variables
 
@@ -59,10 +49,6 @@ All variables for this role are declared in the following files:
 ## Dependencies
 
 This role has no dependencies.
-
-## Licenses
-
-[Apache-2.0](https://github.com/grzegorzfranus/chrony/blob/main/LICENSE).
 
 ## Example Playbook
 
@@ -79,6 +65,11 @@ Using the role is fairly straightforward:
           - 169.254.169.254
 ```
 
+## Licenses
+
+The [MIT](https://github.com/grzegorzfranus/chrony/blob/main/LICENSE) License.
+If you have some other use in mind, contact me.
+
 ## Author Information
 
-**Grzegorz Franus**
+This role was created by **Grzegorz Franus**.
