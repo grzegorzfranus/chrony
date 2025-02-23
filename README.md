@@ -2,7 +2,7 @@
 
 |Version|Tests|License|Code style|
 |------|-------|-------|-------|
-|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|[![Tests](https://github.com/grzegorzfranus/chrony/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Repository License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)|[![Python Black Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)|
+|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|[![Tests](https://github.com/grzegorzfranus/chrony/actions/workflows/ansible-test.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Repository License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)|[![Python Black Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)|
 
 ## Overview
 
@@ -24,18 +24,18 @@ Chronyd is a daemon for synchronisation of the system clock. It can synchronise 
 
 ## Requirements
 
-#### Ansible version
+### Ansible version
 
 Ansible >= 2.15
 
-#### Python version
+### Python version
 
 Python >= 3.9
 
-#### Setup module
+### Setup module
 The role uses facts gathered by Ansible on the remote host. If you disable the Setup module in your playbook, the role will not work properly.
 
-#### Root access
+### Root access
 This role requires root access for some tasks. Make sure that you are using a user with root privileges.
 
 ## Role Variables
