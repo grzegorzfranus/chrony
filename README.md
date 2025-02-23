@@ -1,13 +1,11 @@
 # Ansible role: chrony
 
-|Lint|Molecule|Version|
+|Version|Molecule|Version|License|
 |------|-------|-------|
-|[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|
-[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ansible-molecule.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|
+|[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ansible-molecule.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|[![Repository License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)|
 
 
 
-[![Repository License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 
 ## Overview
 
