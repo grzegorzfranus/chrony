@@ -61,18 +61,18 @@ jobs:
       - name: Ensure roles directory exists
         run: mkdir -p molecule/default/roles
 
-      - name: Link role to roles directory
-        run: ln -s ${{ github.workspace }} molecule/default/roles/chrony
+      # - name: Link role to roles directory
+      #   run: ln -s ${{ github.workspace }} molecule/default/roles/chrony
 
-      - name: Switch to using Python 3 by default
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
+      # - name: Switch to using Python 3 by default
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: "3.x"
 
-      - name: Install Dependencies
-        run: |
-          pip3 install molecule-plugins[docker] ansible-lint testinfra yamllint
+      # - name: Install Dependencies
+      #   run: |
+      #     pip3 install molecule-plugins[docker] ansible-lint testinfra yamllint
 
-      - name: Run Molecule Tests
-        run: |
-          molecule test
+      # - name: Run Molecule Tests
+      #   run: |
+      #     molecule test

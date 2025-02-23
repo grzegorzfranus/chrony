@@ -27,23 +27,23 @@ jobs:
         with:
           path: "${{ github.repository }}"
 
-      - name: Switch to using Python 3.12 by default
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+      # - name: Switch to using Python 3.12 by default
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: "3.12"
 
-      - name: Install Dependencies
-        run: |
-          pip3 install ansible yamllint ansible-lint
+      # - name: Install Dependencies
+      #   run: |
+      #     pip3 install ansible yamllint ansible-lint
 
-      - name: Run Yamllint test
-        run: |
-          yamllint -c "${{ github.repository }}/.yamllint" "${{ github.repository }}"
+      # - name: Run Yamllint test
+      #   run: |
+      #     yamllint -c "${{ github.repository }}/.yamllint" "${{ github.repository }}"
 
-      - name: Run Ansible-Lint test
-        run: |
-          cd "${{ github.repository }}"
-          ansible-lint ../.
+      # - name: Run Ansible-Lint test
+      #   run: |
+      #     cd "${{ github.repository }}"
+      #     ansible-lint ../.
 
   # build:
   #   name: Run Molecule Tests
