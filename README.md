@@ -42,17 +42,36 @@ This role requires root access for some tasks. Make sure that you are using a us
 
 ### Main variables
 
-* aaaa
-* aaaa
-* aaaa
-* aaaa
+* chrony_role_action
+* chrony_service_enabled
+* chrony_configure_logrotate
 
 ### Chrony Configuration
 
+* chrony_ntp_source_mode
+* chrony_ntp_servers
+* chrony_rtcsync_enable
+* chrony_maxdistance
+* chrony_ntsdumpdir
+* chrony_num_minsources
+* chrony_maxupdateskew
+* chrony_makestep
+* chrony_logchange
+* chrony_leapsectz
+* chrony_log_enable
 * aaaa
 * aaaa
-* aaaa
-* aaaa
+
+### Logrotate Configuration
+
+* chrony_logrotate_options.archive_directory_path
+* chrony_logrotate_options.frequency
+* chrony_logrotate_options.count
+* chrony_logrotate_options.missingok
+* chrony_logrotate_options.compress
+* chrony_logrotate_options.nocreate
+* chrony_logrotate_options.copytruncate
+* chrony_logrotate_options.dateext
 
 ## Dependencies
 
@@ -61,7 +80,6 @@ This role has no dependencies.
 ## Example Playbook
 
 Using the role is fairly straightforward:
-> site.yml:
 ```yaml
 - hosts: server
   roles:
