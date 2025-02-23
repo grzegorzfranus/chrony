@@ -2,7 +2,7 @@
 
 |Lint|Molecule|Version|
 |------|-------|-------|
-|[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ci.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ci.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|
+|[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Build Status](https://github.com/grzegorzfranus/chrony/actions/workflows/ansible-molecule.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|
 
 ## Overview
 
