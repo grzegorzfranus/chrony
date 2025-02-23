@@ -68,6 +68,7 @@ Using the role is fairly straightforward:
 ## Licenses
 
 The [MIT](https://github.com/grzegorzfranus/chrony/blob/main/LICENSE) License.
+
 If you have some other use in mind, contact me.
 
 ## Author Information
