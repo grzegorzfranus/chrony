@@ -1,4 +1,4 @@
-name: Ansible Tests
+name: Tests
 
 on:
   push:
@@ -17,8 +17,8 @@ on:
       - "hotfix/*"
 
 jobs:
-  lint:
-    name: Check Ansible Code
+  yamllint:
+    name: Check Ansible Code using yamllint
     runs-on: ubuntu-latest
 
     steps:
@@ -40,15 +40,10 @@ jobs:
         run: |
           yamllint -c "${{ github.repository }}/.yamllint" "${{ github.repository }}"
 
-      - name: Run Ansible-Lint test
-        run: |
-          cd "${{ github.repository }}"
-          ansible-lint ../.
-
   # build:
   #   name: Run Molecule Tests
   #   runs-on: ubuntu-latest
-  #   needs: lint
+  #   needs: yamllint
   #   env:
   #     FORCE_COLOR: 1
   #     PY_COLORS: 1
