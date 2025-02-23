@@ -72,4 +72,4 @@ If you have some other use in mind, contact me.
 
 ## Author Information
 
-This role was created by **Grzegorz Franus**.
+This role was created by **[Grzegorz Franus](https://github.com/grzegorzfranus)**.
