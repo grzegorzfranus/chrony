@@ -1,4 +1,4 @@
-name: Tests
+name: tests
 
 on:
   push:
@@ -38,7 +38,7 @@ jobs:
 
       - name: Run Yamllint test
         run: |
-          yamllint -c "${{ github.repository }}/.yamllint" "${{ github.repository }}"
+          yamllint -c "${{ github.repository }}/.config/.yamllint" "${{ github.repository }}"
 
   # build:
   #   name: Run Molecule Tests
