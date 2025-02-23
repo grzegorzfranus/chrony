@@ -8,14 +8,14 @@
 
 Ansible role that installs chrony as a client or server.
 
-Chronyd is a daemon for synchronisation of the system clock. It can synchronise the clock with NTP servers, reference clocks (e.g. a GPS receiver), and manual input using wristwatch and keyboard via chronyc. It can also operate as an NTPv4 (RFC 5905) server and peer to provide a time service to other computers in the network.
+Chronyd is a daemon for synchronisation of the system clock.
 
 ## Main actions
 
 * Install Chrony package.
-* Configure Chrony service as a client or server.
-* Set up logrotate for Chrony (optional).
-* Upgrade Chrony package.
+* Configure Chrony service.
+* Set up logrotate (optional).
+* Upgrade Chrony package (optional).
 * Test if Chrony is synchronized with declared server(s).
 
 ## Version
@@ -40,11 +40,19 @@ This role requires root access for some tasks. Make sure that you are using a us
 
 ## Role Variables
 
-All variables for this role are declared in the following files:
-```yaml
-  - default/main.yml
-  - vars/*.yml
-```
+### Main variables
+
+* aaaa
+* aaaa
+* aaaa
+* aaaa
+
+### Chrony Configuration
+
+* aaaa
+* aaaa
+* aaaa
+* aaaa
 
 ## Dependencies
 
@@ -55,12 +63,14 @@ This role has no dependencies.
 Using the role is fairly straightforward:
 > site.yml:
 ```yaml
-- hosts: servers
-  become: true
+- hosts: server
   roles:
     - role: chrony
       vars:
-        chrony_role_action: "all" 
+        chrony_role_action: "all"
+        chrony_service_enabled: true
+        chrony_configure_logrotate: true
+        chrony_ntp_source_mode: "pool"
         chrony_ntp_servers:
           - 169.254.169.254
 ```

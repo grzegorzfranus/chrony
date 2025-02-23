@@ -2,7 +2,9 @@
 # ================================================================
 # Ansible Variables - Shared Variables
 # ================================================================
-# This file defines shared variables Chrony NTP service settings and related parameters.
+# This file defines default Chrony NTP service settings
+# and related parameters.
+#
 # Sections:
 #   1. General Settings
 #   2. Logrotate Settings

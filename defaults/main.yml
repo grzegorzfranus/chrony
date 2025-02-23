@@ -2,7 +2,9 @@
 # ================================================================
 # Ansible Variables - Defaults
 # ================================================================
-# This file defines default Chrony NTP service settings and related parameters.
+# This file defines default Chrony NTP service settings
+# and related parameters.
+#
 # Sections:
 #   1. General Settings
 #   2. Logrotate Settings
@@ -23,7 +25,11 @@ chrony_logrotate_options:
   archive_directory_path: "/var/log/chrony"
   frequency: "daily"
   count: 30
+  missingok: true
+  compress: true
+  nocreate: true
   copytruncate: false
+  dateext: true
 
 # ------------------------------------------------
 # 3. NTP Server Settings

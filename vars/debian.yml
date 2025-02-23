@@ -2,7 +2,9 @@
 # ================================================================
 # Ansible Variables - Debian Family Variables
 # ================================================================
-# This file defines Debian Family variables Chrony NTP service settings and related parameters.
+# This file defines default Chrony NTP service settings
+# and related parameters.
+#
 # Sections:
 #   1. General Settings
 #   2. NTP Server Settings
