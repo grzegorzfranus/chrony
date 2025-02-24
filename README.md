@@ -42,26 +42,26 @@ This role requires root access for some tasks. Make sure that you are using a us
 
 ### Main variables
 
-* chrony_role_action - Specific role action.
-* chrony_service_enabled - Enables or disables Chrony at system startup.
-* chrony_configure_logrotate - Enables or disables logrotate for Chrony service.
+* `chrony_role_action` - Specific role action.
+* `chrony_service_enabled` - Enables or disables Chrony at system startup.
+* `chrony_configure_logrotate` - Enables or disables logrotate for Chrony service.
 
 ### Chrony Configuration
 
-* chrony_ntp_source_mode - pool or server
-* chrony_ntp_servers - A list of NTP servers that Chrony will use to synchronize the system clock. Each server can be configured with specific options like iburst for faster initial synchronization.
-* chrony_rtcsync_enable - Enables or disables synchronization of the system clock to the Real-Time Clock (RTC) using the kernel's 11-minute mode, ensuring periodic updates.
-* chrony_maxdistance - Sets the maximum acceptable root distance for a source to be considered valid for synchronization. Helps filter out unreliable NTP sources.
-* chrony_ntsdumpdir - Specifies the directory where Chrony will store dumps of non-volatile memory timestamps, which help in maintaining accurate time after a reboot.
-* chrony_num_minsources - Defines the minimum number of NTP sources required before Chrony selects and synchronizes with a time source. Ensures accuracy by preventing synchronization with too few sources.
-* chrony_maxupdateskew - Limits the allowed skew (offset fluctuation) of an NTP source before it is considered unreliable. Helps maintain time stability.
-* chrony_makestep - Specifies the conditions under which Chrony will make a sudden step correction to the clock instead of gradually adjusting it. Commonly used for large time offsets.
-* chrony_logchange - Sets the threshold for logging significant time changes in system synchronization. Helps in monitoring and diagnosing time-related anomalies.
-* chrony_leapsectz - Defines the location of the leap second file that Chrony uses to adjust for leap second corrections. Ensures accurate timekeeping during leap second events.
-* chrony_log_enable - Enables or disables logging in Chrony, allowing administrators to track time synchronization details for analysis and debugging.
-* chrony_logdir_path - Specifies the directory where Chrony should store log files, ensuring organized storage of synchronization data.
-* chrony_log_options - Defines specific logging options, such as tracking measurements, statistics, and system corrections, to provide detailed insights into time synchronization.
-* chrony_ntp_clients - Configures Chrony to allow or deny NTP clients from synchronizing with the system as an NTP server, enabling or restricting external systems from querying the local time.
+* `chrony_ntp_source_mode` - pool or server
+* `chrony_ntp_servers` - A list of NTP servers that Chrony will use to synchronize the system clock. Each server can be configured with specific options like iburst for faster initial synchronization.
+* `chrony_rtcsync_enable` - Enables or disables synchronization of the system clock to the Real-Time Clock (RTC) using the kernel's 11-minute mode, ensuring periodic updates.
+* `chrony_maxdistance` - Sets the maximum acceptable root distance for a source to be considered valid for synchronization. Helps filter out unreliable NTP sources.
+* `chrony_ntsdumpdir` - Specifies the directory where Chrony will store dumps of non-volatile memory timestamps, which help in maintaining accurate time after a reboot.
+* `chrony_num_minsources` - Defines the minimum number of NTP sources required before Chrony selects and synchronizes with a time source. Ensures accuracy by preventing synchronization with too few sources.
+* `chrony_maxupdateskew` - Limits the allowed skew (offset fluctuation) of an NTP source before it is considered unreliable. Helps maintain time stability.
+* `chrony_makestep` - Specifies the conditions under which Chrony will make a sudden step correction to the clock instead of gradually adjusting it. Commonly used for large time offsets.
+* `chrony_logchange` - Sets the threshold for logging significant time changes in system synchronization. Helps in monitoring and diagnosing time-related anomalies.
+* `chrony_leapsectz` - Defines the location of the leap second file that Chrony uses to adjust for leap second corrections. Ensures accurate timekeeping during leap second events.
+* `chrony_log_enable` - Enables or disables logging in Chrony, allowing administrators to track time synchronization details for analysis and debugging.
+* `chrony_logdir_path` - Specifies the directory where Chrony should store log files, ensuring organized storage of synchronization data.
+* `chrony_log_options` - Defines specific logging options, such as tracking measurements, statistics, and system corrections, to provide detailed insights into time synchronization.
+* `chrony_ntp_clients` - Configures Chrony to allow or deny NTP clients from synchronizing with the system as an NTP server, enabling or restricting external systems from querying the local time.
 
 ### Logrotate Configuration
 

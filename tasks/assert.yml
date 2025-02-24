@@ -5,8 +5,7 @@
       - chrony_role_action is defined
       - chrony_role_action is string
       - chrony_role_action in [
-        "all", "requirements", "install", "configure", "logrotate", "upgrade",
-        "test"
+        "all", "requirements", "install", "configure", "logrotate", "upgrade", "test"
         ]
     quiet: true
 

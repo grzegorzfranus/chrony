@@ -3,8 +3,7 @@ galaxy_info:
   role_name: chrony
   author: Grzegorz Franus
   description: >
-    Ansible role that installs and configures chrony service
-    as a client or server
+    Ansible role that installs and configures Chrony service as a client or server
   license: Apache-2.0
   company: none
 
