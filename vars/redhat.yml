@@ -13,6 +13,7 @@
 # ------------------------------------------------
 # 1. General Settings
 # ------------------------------------------------
+chrony_service_name: "chronyd"
 chrony_ntp_service_name: "ntpd"
 chrony_systemd_timesyncd_service_name: "systemd-timesyncd"
 chrony_config_path: "/etc/chrony.conf"

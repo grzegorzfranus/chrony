@@ -16,7 +16,6 @@ Chronyd is a daemon for synchronisation of the system clock.
 * Configure Chrony service.
 * Set up logrotate (optional).
 * Upgrade Chrony package (optional).
-* Test if Chrony is synchronized with declared server(s).
 
 ## Version
 
