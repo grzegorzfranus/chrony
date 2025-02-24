@@ -12,7 +12,7 @@
   when: >
     not _archive_log_directory_stat_.stat.exists
 
-- name: logrotate | Deploy logrotate config file for chrony
+- name: logrotate | Deploy logrotate config file for Chrony
   become: true
   ansible.builtin.template:
     src: "templates/logrotate/chrony.j2"

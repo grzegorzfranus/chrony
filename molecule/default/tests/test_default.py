@@ -2,26 +2,19 @@ import pytest
 import testinfra.utils.ansible_runner
 import re
 
+def test_chrony_is_installed(host):
+    chrony = host.package("chrony")
+    assert chrony.is_installed
+    print(chrony.version)
 
-def test_python_is_installed(host):
-    python = host.package("python3")
-    assert python.is_installed
+def test_chrony_running_and_enabled(host):
+    chrony = host.service("chrony")
+    assert chrony.is_running
+    assert chrony.is_enabled
 
-
-def test_nginx_is_installed(host):
-    nginx = host.package("nginx")
-    assert nginx.is_installed
-    print(nginx.version)
-    assert re.match("1.24*", nginx.version)
-
-
-def test_etc_passwd_exists(host):
-    passwd = host.file("/etc/passwd")
-    assert passwd.exists
-    assert passwd.user == "root"
-
-
-def test_nginx_running_and_enabled(host):
-    nginx = host.service("nginx")
-    assert nginx.is_running
-    assert nginx.is_enabled
+def test_logrotate_chrony_exists(host):
+    logrotate = host.file("/etc/logrotate.d/chrony")
+    assert logrotate.exists
+    assert logrotate.user == "root"
+    assert logrotate.group == "root"
+    assert logrotate.mode == 0o644

@@ -24,23 +24,23 @@
   when: >
     chrony_role_action in ['all', 'requirements']
 
-- name: chrony | install | Install chrony package
+- name: chrony | install | Install Chrony package
   include_tasks: install.yml
   when: >
     chrony_role_action in ['all', 'install']
 
-- name: chrony | configure | Configure chrony service
+- name: chrony | configure | Configure Chrony service
   include_tasks: configure.yml
   when: >
     chrony_role_action in ['all', 'configure']
 
-- name: chrony | logrotate | Configure logrotate for chrony service
+- name: chrony | logrotate | Configure logrotate for Chrony service
   include_tasks: logrotate.yml
   when: >
     chrony_role_action in ['all', 'configure', 'logrotate'] and
     chrony_configure_logrotate | default(false)
 
-- name: chrony | upgrade | Upgrade chrony package
+- name: chrony | upgrade | Upgrade Chrony package
   include_tasks: upgrade.yml
   when: >
     chrony_role_action in ['upgrade']
