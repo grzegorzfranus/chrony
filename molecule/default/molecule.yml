@@ -68,4 +68,4 @@ verifier:
 
 lint: |
   set -e
-  ansible-lint --config=.config/.ansible-lint
+  ansible-lint --config=.ansible-lint
