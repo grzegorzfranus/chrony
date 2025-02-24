@@ -30,7 +30,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip3 install ansible yamllint ansible-lint
+          pip3 install yamllint
 
       - name: Run Yamllint test
         run: |
@@ -62,7 +62,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip3 install molecule-plugins[docker] ansible-lint testinfra yamllint
+          pip3 install molecule-plugins[docker] ansible-lint testinfra
 
       - name: Run Molecule Tests
         run: |

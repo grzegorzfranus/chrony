@@ -65,3 +65,7 @@ provisioner:
 
 verifier:
   name: testinfra
+
+lint: |
+  set -e
+  ansible-lint --config=.config/.ansible-lint
