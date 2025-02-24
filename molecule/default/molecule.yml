@@ -38,31 +38,6 @@ provisioner:
   playbooks:
     converge: main.yml
 
-# scenario:
-#   name: default
-#   test_sequence:
-#     - lint
-#     - destroy
-#     - syntax
-#     - create
-#     - prepare
-#     - converge
-#     - idempotence
-#     - verify
-#     - cleanup
-#     - destroy
-# scenario:
-#   name: default
-#   test_sequence:
-#     - lint
-#     - dependency
-#     - create
-#     - prepare
-#     - converge
-#     - verify
-#     - destroy
-# Molecule handles role testing by invoking configurable verifiers.
-
 verifier:
   name: testinfra
 

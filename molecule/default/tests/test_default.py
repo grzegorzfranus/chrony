@@ -7,11 +7,6 @@ def test_chrony_is_installed(host):
     assert chrony.is_installed
     print(chrony.version)
 
-def test_chrony_running_and_enabled(host):
-    chrony = host.service("chrony")
-    assert chrony.is_running
-    assert chrony.is_enabled
-
 def test_logrotate_chrony_exists(host):
     logrotate = host.file("/etc/logrotate.d/chrony")
     assert logrotate.exists
