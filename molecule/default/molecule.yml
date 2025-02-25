@@ -30,6 +30,42 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     ansible_extra_vars:
       ansible_python_interpreter: /usr/bin/python3
+  - name: debian12
+    image: "debian:12"
+    dockerfile: ./Dockerfile.debian12
+    privileged: false
+    pre_build_image: false
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    ansible_extra_vars:
+      ansible_python_interpreter: /usr/bin/python3
+  - name: ubuntu22
+    image: "ubuntu:22.04"
+    dockerfile: ./Dockerfile.ubuntu22
+    privileged: false
+    pre_build_image: false
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    ansible_extra_vars:
+      ansible_python_interpreter: /usr/bin/python3
+  - name: centos8
+    image: "quay.io/centos/centos:8"
+    dockerfile: ./Dockerfile.centos8
+    privileged: false
+    pre_build_image: false
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    ansible_extra_vars:
+      ansible_python_interpreter: /usr/bin/python3
 
 provisioner:
   name: ansible
