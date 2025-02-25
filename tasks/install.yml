@@ -1,4 +1,16 @@
 ---
+- name: install | Update package cache (Debian-based)
+  ansible.builtin.apt:
+    update_cache: yes
+  when: >
+    ansible_os_family | lower == "debian"
+
+- name: install | Update package cache (RedHat-based)
+  ansible.builtin.dnf:
+    update_cache: yes
+  when: >
+    ansible_os_family | lower == "redhat"
+
 - name: install | Install Chrony package
   become: true
   ansible.builtin.package:
