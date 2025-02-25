@@ -10,7 +10,7 @@ platforms:
     image: "ubuntu:24.04"
     dockerfile: ./Dockerfile.ubuntu24
     privileged: false
-    pre_build_image: true
+    pre_build_image: false
     tmpfs:
       - /run
       - /tmp
@@ -22,7 +22,7 @@ platforms:
     image: "debian:12"
     dockerfile: ./Dockerfile.debian12
     privileged: false
-    pre_build_image: true
+    pre_build_image: false
     tmpfs:
       - /run
       - /tmp
@@ -34,7 +34,7 @@ platforms:
     image: "quay.io/centos/centos:stream9"
     dockerfile: ./Dockerfile.centos9
     privileged: false
-    pre_build_image: true
+    pre_build_image: false
     tmpfs:
       - /run
       - /tmp
