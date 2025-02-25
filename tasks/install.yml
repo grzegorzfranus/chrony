@@ -1,11 +1,13 @@
 ---
 - name: install | Update package cache (Debian-based)
+  become: true
   ansible.builtin.apt:
     update_cache: yes
   when: >
     ansible_os_family | lower == "debian"
 
 - name: install | Update package cache (RedHat-based)
+  become: true
   ansible.builtin.dnf:
     update_cache: yes
   when: >
@@ -16,3 +18,4 @@
   ansible.builtin.package:
     name: "{{ chrony_package_name }}"
     state: present
+    update_cache: true
