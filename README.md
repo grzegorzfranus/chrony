@@ -44,6 +44,7 @@ This role requires root access for some tasks. Make sure that you are using a us
 * `chrony_role_action` - Specific role action.
 * `chrony_service_enabled` - Enables or disables Chrony at system startup.
 * `chrony_configure_logrotate` - Enables or disables logrotate for Chrony service.
+* `chrony_run_test` - Run task to check Chrony synchronize status.
 
 ### Chrony Configuration
 

@@ -44,3 +44,9 @@
   include_tasks: upgrade.yml
   when: >
     chrony_role_action in ['upgrade']
+
+- name: chrony | test | Make sure that time is synchronized with server
+  include_tasks: test.yml
+  when: >
+    chrony_role_action in ['all', 'configure', 'upgrade' ] and
+    chrony_run_test: false | default(false)

@@ -17,6 +17,7 @@
 chrony_role_action: "all"
 chrony_service_enabled: true
 chrony_configure_logrotate: false
+chrony_run_test: false
 
 # ------------------------------------------------
 # 2. Logrotate Settings

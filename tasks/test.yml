@@ -1,0 +1,11 @@
+---
+- name: test | Flush handlers
+  meta: flush_handlers
+
+- name: test | Force NTP sync
+  become: true
+  ansible.builtin.command: chronyc makestep
+
+- name: test | Ensure system is NTP time synced
+  ansible.builtin.command: chronyc waitsync 30
+  changed_when: false
