@@ -59,8 +59,8 @@ jobs:
     steps:
       - name: Checkout the codebase.
         uses: actions/checkout@v4
-        with:
-          path: 'grzegorzfranus.chrony'
+        # with:
+        #   path: 'grzegorzfranus.chrony'
 
       - name: Switch to using Python 3 by default.
         uses: actions/setup-python@v5
@@ -77,11 +77,10 @@ jobs:
 
       - name: Link role to roles directory
         run: |
-          ls -la ../../grzegorzfranus.chrony
-          ln -s ../../grzegorzfranus.chrony molecule/default/roles/chrony
+          ln -s grzegorzfranus.chrony molecule/default/roles/chrony
           ls -la molecule/default/roles
 
-      - name: Run Molecule Tests.
+      - name: Molecule Tests.
         run: |
           molecule test
         env:
