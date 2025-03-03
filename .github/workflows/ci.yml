@@ -13,14 +13,15 @@ on:
       - "bugfix/*"
       - "hotfix/*"
 
-defaults:
-  run:
-    working-directory: 'grzegorzfranus.chrony'
+# defaults:
+#   run:
+#     working-directory: 'grzegorzfranus.chrony'
 
 jobs:
   lint:
     name: Lint code
     runs-on: ubuntu-latest
+    working-directory: 'grzegorzfranus.chrony'
 
     steps:
       - name: Checkout the codebase.
