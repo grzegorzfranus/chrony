@@ -19,6 +19,10 @@
   run_once: true
   delegate_to: localhost
 
+- name: chrony | debug | Debug variables
+  debug:
+    var: chrony_service_name
+
 - name: chrony | requirements | Make sure that system meets requirements
   include_tasks: requirements.yml
   when: >
