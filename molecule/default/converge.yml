@@ -1,0 +1,18 @@
+---
+- name: Converge
+  hosts: all
+
+  vars:
+    chrony_role_action: "all"
+    chrony_service_enabled: true
+    chrony_configure_logrotate: true
+    chrony_ntp_source_mode: "server"
+    chrony_ntp_servers:
+      - "0.pool.ntp.org iburst minpoll 4 maxpoll 8"
+      - "1.pool.ntp.org iburst minpoll 4 maxpoll 8"
+    chrony_rtcsync_enable: true
+    chrony_ntp_clients:
+      - 127.0.0.1
+
+  roles:
+    - role: chrony

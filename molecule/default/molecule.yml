@@ -1,4 +1,5 @@
 ---
+role_name_check: 1
 dependency:
   name: galaxy
 
@@ -60,7 +61,7 @@ provisioner:
   options:
     vvv: true
   playbooks:
-    converge: main.yml
+    converge: converge.yml
 
 verifier:
   name: testinfra

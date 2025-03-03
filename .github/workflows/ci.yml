@@ -19,7 +19,7 @@ defaults:
 
 jobs:
   lint:
-    name: Check Ansible Code using yamllint
+    name: Lint code
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +28,7 @@ jobs:
         with:
           path: 'grzegorzfranus.chrony'
 
-      - name: Switch to using Python 3.12 by default.
+      - name: Switch to using Python 3 by default.
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
@@ -41,6 +41,34 @@ jobs:
         run: |
           # yamllint -c "${{ github.repository }}/.yamllint" "${{ github.repository }}"
           yamllint .
+
+  molecule:
+    name: Run Molecule Tests
+    runs-on: ubuntu-latest
+    needs: lint
+    strategy:
+      matrix:
+        distro:
+          - rockylinux9
+          - ubuntu2404
+          - ubuntu2204
+          - debian12
+          - debian11
+
+    steps:
+      - name: Checkout the codebase.
+        uses: actions/checkout@v4
+        with:
+          path: 'grzegorzfranus.chrony'
+
+      - name: Switch to using Python 3 by default.
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Molecule dependencies.
+        run: |
+          pip3 install ansible molecule molecule-plugins[docker]
 
   # build:
   #   name: Run Molecule Tests
