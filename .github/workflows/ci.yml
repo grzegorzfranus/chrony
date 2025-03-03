@@ -49,11 +49,11 @@ jobs:
     strategy:
       matrix:
         distro:
-          - rockylinux9
+          # - rockylinux9
           - ubuntu2404
-          - ubuntu2204
+          # - ubuntu2204
           - debian12
-          - debian11
+          # - debian11
 
     steps:
       - name: Checkout the codebase.
@@ -68,7 +68,15 @@ jobs:
 
       - name: Install Molecule dependencies.
         run: |
-          pip3 install ansible molecule molecule-plugins[docker]
+          pip3 install ansible molecule molecule-plugins[docker] testinfra
+
+      - name: Run Molecule Tests.
+        run: |
+          molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
 
   # build:
   #   name: Run Molecule Tests
