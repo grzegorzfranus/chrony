@@ -73,16 +73,13 @@ jobs:
 
       - name: Ensure roles directory exists
         run: |
-          pwd
-          ls -la
           mkdir -p molecule/default/roles
-          ls -la molecule/default/roles
 
       - name: Link role to roles directory
         run: |
-          ln -s ../grzegorzfranus.chrony molecule/default/roles/chrony
+          ls -la ../../grzegorzfranus.chrony
+          ln -s ../../grzegorzfranus.chrony molecule/default/roles/chrony
           ls -la molecule/default/roles
-
 
       - name: Run Molecule Tests.
         run: |
