@@ -18,31 +18,6 @@ on:
 #     working-directory: 'grzegorzfranus.chrony'
 
 jobs:
-  # lint:
-  #   name: Lint code
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: Checkout the codebase.
-  #       uses: actions/checkout@v4
-  #       with:
-  #         path: 'grzegorzfranus.chrony'
-
-  #     - name: Switch to using Python 3 by default.
-  #       uses: actions/setup-python@v5
-  #       with:
-  #         python-version: "3.x"
-
-  #     - name: Install test dependencies.
-  #       run: |
-  #         pip3 install yamllint
-
-  #     - name: Lint code.
-  #       run: |
-  #         pwd
-  #         ls -la
-  #         yamllint .
-
   molecule:
     name: Run Molecule Tests
     runs-on: ubuntu-latest
