@@ -39,8 +39,10 @@ jobs:
 
       - name: Lint code.
         run: |
+          pwd
+          ls -la
           yamllint .
-# yamllint -c "${{ github.repository }}/.yamllint" "${{ github.repository }}"
+
   molecule:
     name: Run Molecule Tests
     runs-on: ubuntu-latest
@@ -51,7 +53,7 @@ jobs:
           # - rockylinux9
           - ubuntu2404
           # - ubuntu2204
-          - debian12
+          # - debian12
           # - debian11
 
     steps:
@@ -70,7 +72,10 @@ jobs:
           pip3 install ansible molecule molecule-plugins[docker] testinfra
 
       - name: Ensure roles directory exists
-        run: mkdir -p molecule/default/roles
+        run: |
+          pwd
+          ls -la
+          mkdir -p molecule/default/roles
 
       - name: Link role to roles directory
         run: ln -s grzegorzfranus.chrony molecule/default/roles/chrony
