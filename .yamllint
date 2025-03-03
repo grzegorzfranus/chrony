@@ -1,5 +1,6 @@
 ---
 extends: default
+
 rules:
   comments:
     min-spaces-from-content: 1
@@ -17,8 +18,6 @@ rules:
   octal-values:
     forbid-implicit-octal: true
     forbid-explicit-octal: true
+
 exclude: |
   .github/
-  .gitignore
-  .yamllint
-  molecule/

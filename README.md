@@ -1,8 +1,8 @@
 # Ansible role: chrony
 
-|Version|Tests|License|Code style|
+|Version|CI|License|Code style|
 |------|-------|-------|-------|
-|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|[![tests](https://github.com/grzegorzfranus/chrony/actions/workflows/tests.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Repository License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)|[![Python Black Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)|
+|[![Version](https://img.shields.io/github/v/release/grzegorzfranus/chrony)](https://github.com/grzegorzfranus/chrony/releases)|[![tests](https://github.com/grzegorzfranus/chrony/actions/workflows/ci.yml/badge.svg)](https://github.com/grzegorzfranus/chrony/actions)|[![Repository License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)|[![Python Black Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)|
 
 ## Overview
 
@@ -76,7 +76,7 @@ This role requires root access for some tasks. Make sure that you are using a us
 
 ## Dependencies
 
-This role has no dependencies.
+None.
 
 ## Example Playbook
 
