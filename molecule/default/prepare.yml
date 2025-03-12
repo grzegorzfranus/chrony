@@ -23,3 +23,11 @@
       ansible.builtin.package:
         name: sudo
         state: present
+
+    - name: Prepare | Configure sudo for ansible user
+      ansible.builtin.copy:
+        content: "ansible ALL=(ALL) NOPASSWD: ALL"
+        dest: /etc/sudoers.d/ansible
+        mode: '0440'
+      when: >
+        ansible_os_family == "RedHat"

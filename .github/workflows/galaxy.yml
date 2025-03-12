@@ -1,5 +1,5 @@
 ---
-name: Release
+name: galaxy
 
 on:
   release:
