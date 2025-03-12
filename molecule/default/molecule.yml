@@ -1,6 +1,10 @@
 ---
+role_name_check: 1
+
 dependency:
   name: galaxy
+  options:
+    ignore-errors: true
 
 driver:
   name: docker
@@ -14,14 +18,14 @@ platforms:
     cgroupns_mode: host
     privileged: true
     pre_build_image: true
-    override_command: false
-    systemd: always
-    capabilities:
-      - SYS_ADMIN
-    tmpfs:
-      - /tmp
-      - /run
-      - /run/lock
+    # override_command: false
+    # systemd: always
+    # capabilities:
+    #   - SYS_ADMIN
+    # tmpfs:
+    #   - /tmp
+    #   - /run
+    #   - /run/lock
 
 provisioner:
   name: ansible
@@ -29,15 +33,15 @@ provisioner:
     prepare: prepare.yml
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
     verify: verify.yml
-  config_options:
-    defaults:
-      interpreter_python: auto_silent
-    ssh_connection:
-      pipelining: true
-  env:
-    ANSIBLE_FORCE_COLOR: "true"
-    ANSIBLE_SUDO: true
-    ANSIBLE_SUDO_USER: root
+  # config_options:
+  #   defaults:
+  #     interpreter_python: auto_silent
+  #   ssh_connection:
+  #     pipelining: true
+  # env:
+  #   ANSIBLE_FORCE_COLOR: "true"
+  #   ANSIBLE_SUDO: true
+  #   ANSIBLE_SUDO_USER: root
 
 verifier:
   name: ansible
