@@ -22,6 +22,10 @@ platforms:
       - /tmp
       - /run
       - /run/lock
+    env:
+      ANSIBLE_USER: ansible
+      ANSIBLE_SUDO: true
+      ANSIBLE_SUDO_USER: root
 
 provisioner:
   name: ansible
@@ -36,6 +40,8 @@ provisioner:
       pipelining: true
   env:
     ANSIBLE_FORCE_COLOR: "true"
+    ANSIBLE_SUDO: true
+    ANSIBLE_SUDO_USER: root
 
 verifier:
   name: ansible

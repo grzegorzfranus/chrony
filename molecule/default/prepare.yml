@@ -24,10 +24,26 @@
         name: sudo
         state: present
 
+    - name: Prepare | Ensure sudoers.d directory exists
+      ansible.builtin.file:
+        path: /etc/sudoers.d
+        state: directory
+        mode: '0755'
+
     - name: Prepare | Configure sudo for ansible user
       ansible.builtin.copy:
-        content: "ansible ALL=(ALL) NOPASSWD: ALL"
+        content: |
+          # Allow ansible user to run all commands without password
+          ansible ALL=(ALL) NOPASSWD: ALL
+          # Allow ansible user to use sudo without password
+          Defaults:ansible !requiretty
         dest: /etc/sudoers.d/ansible
         mode: '0440'
-      when: >
-        ansible_os_family == "RedHat"
+        validate: '/usr/sbin/visudo -cf %s'
+
+    - name: Prepare | Ensure ansible user exists
+      ansible.builtin.user:
+        name: ansible
+        state: present
+        shell: /bin/bash
+        create_home: true
