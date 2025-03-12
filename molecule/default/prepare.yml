@@ -18,3 +18,8 @@
       changed_when: false
       when: >
         ansible_os_family == "RedHat"
+
+    - name: Prepare | Install sudo package
+      ansible.builtin.package:
+        name: sudo
+        state: present
