@@ -1,0 +1,9 @@
+---
+- name: molecule | Converge
+  hosts: all
+
+  tasks:
+
+    - name: Converge | Run role
+      ansible.builtin.include_role:
+        name: grzegorzfranus.chrony

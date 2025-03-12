@@ -1,0 +1,52 @@
+---
+- name: chrony | include_vars | Gather OS specific variables
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_facts['distribution'] | lower }}_{{ ansible_facts['distribution_version'] | lower }}.yml"
+        - "{{ ansible_facts['distribution'] | lower }}_{{ ansible_facts['distribution_major_version'] | lower }}.yml"
+        - "{{ ansible_facts['distribution'] | lower }}.yml"
+        - "{{ ansible_facts['os_family'] | lower }}_{{ ansible_facts['distribution_version'] | lower }}.yml"
+        - "{{ ansible_facts['os_family'] | lower }}_{{ ansible_facts['distribution_major_version'].split('.')[0] }}.yml"
+        - "{{ ansible_facts['os_family'] | lower }}.yml"
+        - "main.yml"
+      paths:
+        - "{{ role_path }}/vars"
+
+- name: chrony | assert | Perform Conditional Tasks
+  import_tasks: assert.yml
+  run_once: true
+  delegate_to: localhost
+
+- name: chrony | requirements | Make sure that system meets requirements
+  include_tasks: requirements.yml
+  when: >
+    chrony_role_action in ['all', 'requirements']
+
+- name: chrony | install | Install Chrony package
+  include_tasks: install.yml
+  when: >
+    chrony_role_action in ['all', 'install']
+
+- name: chrony | configure | Configure Chrony service
+  include_tasks: configure.yml
+  when: >
+    chrony_role_action in ['all', 'configure']
+
+- name: chrony | logrotate | Configure logrotate for Chrony service
+  include_tasks: logrotate.yml
+  when: >
+    chrony_role_action in ['all', 'configure', 'logrotate'] and
+    chrony_configure_logrotate | default(false)
+
+- name: chrony | upgrade | Upgrade Chrony package
+  include_tasks: upgrade.yml
+  when: >
+    chrony_role_action in ['upgrade']
+
+- name: chrony | test | Make sure that time is synchronized with server
+  include_tasks: test.yml
+  when: >
+    chrony_role_action in ['all', 'configure', 'upgrade' ] and
+    chrony_run_test | default(false)
