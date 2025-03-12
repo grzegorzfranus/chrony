@@ -33,15 +33,16 @@ provisioner:
     prepare: prepare.yml
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
     verify: verify.yml
-  # config_options:
-  #   defaults:
-  #     interpreter_python: auto_silent
-  #   ssh_connection:
-  #     pipelining: true
-  # env:
-  #   ANSIBLE_FORCE_COLOR: "true"
-  #   ANSIBLE_SUDO: true
-  #   ANSIBLE_SUDO_USER: root
+  config_options:
+    defaults:
+      interpreter_python: /usr/bin/python3.12
+      # interpreter_python: auto_silent
+    ssh_connection:
+      pipelining: true
+  env:
+    ANSIBLE_FORCE_COLOR: "true"
+    ANSIBLE_SUDO: true
+    ANSIBLE_SUDO_USER: root
 
 verifier:
   name: ansible
