@@ -1,6 +1,7 @@
 ---
 - name: molecule | Converge
   hosts: all
+  become: true
 
   tasks:
 
