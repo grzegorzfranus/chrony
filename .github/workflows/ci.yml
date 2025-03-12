@@ -45,8 +45,8 @@ jobs:
         scenario:
           - default
         distro:
-          - rockylinux9
-          # - ubuntu2404
+          # - rockylinux9
+          - ubuntu2404
           # - debian12
 
     steps:
