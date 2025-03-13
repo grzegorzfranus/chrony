@@ -41,8 +41,8 @@ provisioner:
       pipelining: true
   env:
     ANSIBLE_FORCE_COLOR: "true"
-    ANSIBLE_SUDO: true
-    ANSIBLE_SUDO_USER: root
+    # ANSIBLE_SUDO: true
+    # ANSIBLE_SUDO_USER: root
 
 verifier:
   name: ansible
