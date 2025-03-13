@@ -6,7 +6,7 @@
   tasks:
 
     - name: Prepare | Update apt cache
-      become: true
+      # become: true
       ansible.builtin.apt:
         update_cache: true
       changed_when: false
@@ -14,7 +14,7 @@
         ansible_os_family == "Debian"
 
     - name: Prepare | Update dnf cache
-      become: true
+      # become: true
       ansible.builtin.dnf:
         update_cache: true
       changed_when: false
@@ -22,15 +22,14 @@
         ansible_os_family == "RedHat"
 
     - name: Prepare | Install python3.12 package
-      become: true
+      # become: true
       ansible.builtin.package:
         name: "python3.12"
         state: present
 
     - name: Prepare | Show python3.12 version
-      become: true
+      # become: true
       ansible.builtin.command:
         cmd: "python3.12 --version"
       register: python_version
       changed_when: false
-      
