@@ -24,8 +24,19 @@
         name: "python3.12"
         state: present
 
-    - name: Prepare | Set python3.12 as default python
-      ansible.builtin.alternatives:
-        name: python3
-        path: /usr/bin/python3.12
-        state: present
+    - name: Ensure /usr/bin/python points to python3.12
+      file:
+        src: /usr/bin/python3.12
+        dest: /usr/bin/python
+        state: link
+        force: true
+
+    - name: Set Python alternatives
+      command: >
+        alternatives --install /usr/bin/python python /usr/bin/python3.12 100
+      changed_when: false
+
+    - name: Select Python 3.12 as default
+      command: >
+        alternatives --set python /usr/bin/python3.12
+      changed_when: false
