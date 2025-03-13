@@ -35,8 +35,8 @@ provisioner:
     verify: verify.yml
   config_options:
     defaults:
-      # interpreter_python: /usr/bin/python3.12
-      interpreter_python: auto_silent
+      interpreter_python: /usr/bin/python3.12
+      # interpreter_python: auto_silent
     ssh_connection:
       pipelining: true
   env:
