@@ -5,38 +5,38 @@
 
   tasks:
 
-    - name: Prepare | Update apt cache
-      ansible.builtin.apt:
-        update_cache: true
-      changed_when: false
-      when: >
-        ansible_os_family == "Debian"
+    # - name: Prepare | Update apt cache
+    #   ansible.builtin.apt:
+    #     update_cache: true
+    #   changed_when: false
+    #   when: >
+    #     ansible_os_family == "Debian"
 
-    - name: Prepare | Update dnf cache
-      ansible.builtin.dnf:
-        update_cache: true
-      changed_when: false
-      when: >
-        ansible_os_family == "RedHat"
+    # - name: Prepare | Update dnf cache
+    #   ansible.builtin.dnf:
+    #     update_cache: true
+    #   changed_when: false
+    #   when: >
+    #     ansible_os_family == "RedHat"
 
     - name: Prepare | Install python3.12 package
       ansible.builtin.package:
         name: "python3.12"
         state: present
 
-    - name: Ensure /usr/bin/python points to python3.12
-      file:
+    - name: Prepare | Ensure /usr/bin/python points to python3.12
+      ansible.builtin.file:
         src: /usr/bin/python3.12
         dest: /usr/bin/python
         state: link
         force: true
 
-    - name: Set Python alternatives
-      command: >
+    - name: Prepare | Set Python alternatives
+      ansible.builtin.command: >
         alternatives --install /usr/bin/python python /usr/bin/python3.12 100
       changed_when: false
 
-    - name: Select Python 3.12 as default
-      command: >
+    - name: Prepare | Select Python 3.12 as default
+      ansible.builtin.command: >
         alternatives --set python /usr/bin/python3.12
       changed_when: false
