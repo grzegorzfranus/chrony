@@ -26,6 +26,6 @@
 
     - name: Prepare | Set python3.12 as default python
       ansible.builtin.alternatives:
-        name: python
+        name: python3
         path: /usr/bin/python3.12
         state: present
