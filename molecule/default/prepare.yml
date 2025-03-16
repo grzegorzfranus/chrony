@@ -3,6 +3,11 @@
   hosts: all
   gather_facts: true
 
+  vars:
+    - ansible_python_interpreter: /usr/bin/python3
+    - become_method: sudo
+    - ansible_connection: ssh
+
   tasks:
 
     - name: Prepare | Update apt cache
