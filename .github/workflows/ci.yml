@@ -42,12 +42,12 @@ jobs:
         scenario:
           - default
         distro:
-          # - rockylinux9
+          - rockylinux9
           # - ubuntu2404
           # - ubuntu2204
           # - debian12
           # - debian11
-          - centos8
+          # - centos8
 
     steps:
       - name: Check out the codebase
