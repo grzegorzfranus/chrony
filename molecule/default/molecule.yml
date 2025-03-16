@@ -40,8 +40,6 @@ provisioner:
       pipelining: true
   env:
     ANSIBLE_FORCE_COLOR: "true"
-    ANSIBLE_BECOME: "true"
-    ANSIBLE_BECOME_USER: "root"
 
 verifier:
   name: ansible
