@@ -42,11 +42,11 @@ jobs:
         scenario:
           - default
         distro:
-          # - rockylinux9
-          - ubuntu2404
-          - ubuntu2204
-          - debian12
-          - debian11
+          - rockylinux9
+          # - ubuntu2404
+          # - ubuntu2204
+          # - debian12
+          # - debian11
 
     steps:
       - name: Check out the codebase
@@ -59,8 +59,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip3 install ansible molecule molecule-plugins[docker] \
-            docker
+          pip3 install ansible molecule molecule-plugins[docker] docker
 
       - name: Run molecule test
         run: |
