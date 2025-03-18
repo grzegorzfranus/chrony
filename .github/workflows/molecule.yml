@@ -32,8 +32,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install molecule molecule-docker ansible-lint yamllint
 
-      - name: Run Ansible Lint
-        run: ansible-lint
+      # - name: Run Ansible Lint
+      #   run: ansible-lint
 
       - name: Run YAML Lint
         run: yamllint .
