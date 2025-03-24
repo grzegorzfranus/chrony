@@ -1,0 +1,5 @@
+---
+- name: Handler | Restart Chrony service
+  ansible.builtin.service:
+    name: "{{ chrony_service_name }}"
+    state: restarted

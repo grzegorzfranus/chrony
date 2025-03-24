@@ -1,0 +1,56 @@
+---
+# ================================================================
+# Ansible Variables - Defaults
+# ================================================================
+# This file defines default Chrony NTP service settings
+# and related parameters.
+#
+# Sections:
+#   1. General Settings
+#   2. Logrotate Settings
+#   3. NTP Server Settings
+# ================================================================
+
+# ------------------------------------------------
+# 1. General Settings
+# ------------------------------------------------
+chrony_role_action: "all"
+chrony_service_enabled: true
+chrony_configure_logrotate: true
+chrony_run_test: false
+
+# ------------------------------------------------
+# 2. Logrotate Settings
+# ------------------------------------------------
+chrony_logrotate_options:
+  archive_directory_path: "/var/log/chrony"
+  frequency: "daily"
+  count: 30
+  missingok: true
+  compress: true
+  nocreate: true
+  copytruncate: false
+  dateext: true
+
+# ------------------------------------------------
+# 3. NTP Server Settings
+# ------------------------------------------------
+chrony_ntp_source_mode: "server"
+chrony_ntp_servers:
+  - "0.pool.ntp.org iburst minpoll 4 maxpoll 8"
+  - "1.pool.ntp.org iburst minpoll 4 maxpoll 8"
+  - "2.pool.ntp.org iburst minpoll 4 maxpoll 8"
+  - "3.pool.ntp.org iburst minpoll 4 maxpoll 8"
+chrony_rtcsync_enable: true
+chrony_maxdistance: 3.0
+chrony_ntsdumpdir: "/var/lib/chrony"
+chrony_num_minsources: 1
+chrony_maxupdateskew: 100.0
+chrony_makestep: "1.0 3"
+chrony_logchange: "0.5"
+chrony_leapsectz: "right/UTC"
+chrony_log_enable: true
+chrony_logdir_path: "/var/log/chrony"
+chrony_log_options: "measurements statistics tracking"
+# chrony_ntp_clients:
+#   - 127.0.0.1

@@ -1,0 +1,6 @@
+---
+- name: install | Install Chrony package
+  ansible.builtin.package:
+    name: "{{ chrony_package_name }}"
+    state: present
+    update_cache: true
