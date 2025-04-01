@@ -5,12 +5,6 @@ galaxy_info:
   namespace: grzegorzfranus
   description: >
     Ansible role to install and configure Chrony NTP client.
-    This role provides a robust and secure time synchronization solution with features like:
-    - NTP server/pool configuration
-    - Log rotation management
-    - Service state control
-    - Security hardening
-    - Performance optimization
   license: Apache-2.0
   company: EWARE
   min_ansible_version: "2.15"
