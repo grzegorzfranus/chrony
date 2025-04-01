@@ -26,6 +26,7 @@ List of officially supported operating systems:
 | Debian | 12 (Bookworm) | ![✓](https://img.shields.io/badge/✓-brightgreen.svg) |
 | Debian | 11 (Bullseye) | ![✓](https://img.shields.io/badge/✓-brightgreen.svg) |
 | Rocky Linux | 9 | ![✓](https://img.shields.io/badge/✓-brightgreen.svg) |
+| Oracle Linux | 9 | ![✓](https://img.shields.io/badge/✓-brightgreen.svg) |
 
 ### Ansible version
 
@@ -33,7 +34,7 @@ Ansible >= 2.15
 
 ### Python version
 
-Python >= 3.11
+Python >= 3.9
 
 ### Setup module
 The role uses facts gathered by Ansible on the remote host. If you disable the Setup module in your playbook, the role will not work properly.
@@ -130,9 +131,6 @@ This role includes Molecule tests for multiple platforms:
 # Run tests for all platforms
 molecule test
 
-# Run tests for specific platform
-molecule test -s ubuntu
-molecule test -s default
 ```
 
 ## License
@@ -141,5 +139,4 @@ Apache-2.0
 
 ## Author Information
 
-- Grzegorz Franus
-- EWARE
+This role was created by [Grzegorz Franus](https://github.com/grzegorzfranus).
