@@ -1,0 +1,112 @@
+---
+# =============================================================================
+# Ansible Role: Chrony - Default Variables
+# =============================================================================
+# This file defines default configuration values for the Chrony NTP service.
+# These values can be overridden by setting them in your playbook or inventory.
+#
+# Sections:
+#   1. General Settings
+#   2. Logrotate Settings
+#   3. NTP Server Settings
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 1. General Settings
+# -----------------------------------------------------------------------------
+# Role execution control and basic service configuration.
+
+# Define which parts of the role to execute (Options: 'all', 'install', 'config')
+chrony_role_action: "all"
+
+# Enable/disable Chrony service on boot
+chrony_service_enabled: true
+
+# Enable/disable logrotate configuration for Chrony logs
+chrony_configure_logrotate: true
+
+# Enable test mode (useful for debugging)
+chrony_run_test: false
+
+# -----------------------------------------------------------------------------
+# 2. Logrotate Settings
+# -----------------------------------------------------------------------------
+# Configuration for log rotation to manage Chrony log files.
+chrony_logrotate_options:
+  # Directory where archived logs will be stored
+  archive_directory_path: "/var/log/chrony"
+  # How often to rotate logs (options: hourly, daily, weekly, monthly)
+  frequency: "daily"
+  # Number of rotated log files to keep
+  count: 30
+  # Don't error if log file is missing
+  missingok: true
+  # Compress rotated logs using gzip
+  compress: true
+  # Don't create new empty log file
+  nocreate: true
+  # Don't use copy+truncate - use default move
+  copytruncate: false
+  # Add date extension to rotated logs
+  dateext: true
+
+# -----------------------------------------------------------------------------
+# 3. NTP Server Settings
+# -----------------------------------------------------------------------------
+# Core NTP configuration parameters for time synchronization.
+
+# Define how this host should operate (Options: 'server', 'client')
+chrony_ntp_source_mode: "server"
+
+# List of NTP servers to sync with
+# Format: "server [options]"
+#   - iburst: Speed up initial synchronization
+#   - minpoll N: Minimum polling interval of 2^N seconds
+#   - maxpoll N: Maximum polling interval of 2^N seconds
+chrony_ntp_servers:
+  - "0.pool.ntp.org iburst minpoll 4 maxpoll 8"  # Poll every 16-256 seconds
+  - "1.pool.ntp.org iburst minpoll 4 maxpoll 8"
+  - "2.pool.ntp.org iburst minpoll 4 maxpoll 8"
+  - "3.pool.ntp.org iburst minpoll 4 maxpoll 8"
+
+# Enable kernel synchronization of the real-time clock (RTC)
+chrony_rtcsync_enable: true
+
+# Maximum allowed root distance in seconds
+# Increase this if you have unreliable network connectivity
+chrony_maxdistance: 3.0
+
+# Directory for storing NTS cookies and keys
+chrony_ntsdumpdir: "/var/lib/chrony"
+
+# Minimum number of sources required for synchronization
+chrony_num_minsources: 1
+
+# Maximum allowed skew for updates (in ppm)
+# Increase this if you have a very unstable clock
+chrony_maxupdateskew: 100.0
+
+# Step clock if offset is larger than 1.0 seconds, but only in first 3 updates
+# Format: "<threshold> <limit>"
+chrony_makestep: "1.0 3"
+
+# Log clock changes larger than 0.5 seconds
+chrony_logchange: "0.5"
+
+# Leap seconds timezone
+chrony_leapsectz: "right/UTC"
+
+# Enable logging
+chrony_log_enable: true
+
+# Directory for storing log files
+chrony_logdir_path: "/var/log/chrony"
+
+# What information to log
+# Options: measurements, statistics, tracking, rtc, refclocks, tempcomp
+chrony_log_options: "measurements statistics tracking"
+
+# List of allowed NTP clients (commented out by default)
+# Uncomment and modify to restrict NTP client access
+# chrony_ntp_clients:
+#   - 127.0.0.1

@@ -1,0 +1,87 @@
+---
+- name: Chrony | include_vars | Gather OS specific variables
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_facts['distribution'] | lower }}_{{ ansible_facts['distribution_version'] | lower }}.yml"
+        - "{{ ansible_facts['distribution'] | lower }}_{{ ansible_facts['distribution_major_version'] | lower }}.yml"
+        - "{{ ansible_facts['distribution'] | lower }}.yml"
+        - "{{ ansible_facts['os_family'] | lower }}_{{ ansible_facts['distribution_version'] | lower }}.yml"
+        - "{{ ansible_facts['os_family'] | lower }}_{{ ansible_facts['distribution_major_version'].split('.')[0] }}.yml"
+        - "{{ ansible_facts['os_family'] | lower }}.yml"
+        - "main.yml"
+      paths:
+        - "{{ role_path }}/vars"
+  tags:
+    - always
+    - chrony
+    - chrony:init
+    - chrony:vars
+
+- name: Chrony | assert | Perform Conditional Tasks
+  import_tasks: assert.yml
+  run_once: true
+  delegate_to: localhost
+  tags:
+    - always
+    - chrony
+    - chrony:validate
+    - chrony:assert
+
+- name: Chrony | requirements | Make sure that system meets requirements
+  ansible.builtin.include_tasks: requirements.yml
+  when: >
+    chrony_role_action in ['all', 'requirements']
+  tags:
+    - chrony
+    - chrony:requirements
+    - chrony:setup
+
+- name: Chrony | install | Install Chrony package
+  ansible.builtin.include_tasks: install.yml
+  when: >
+    chrony_role_action in ['all', 'install']
+  tags:
+    - chrony
+    - chrony:install
+    - chrony:setup
+
+- name: Chrony | configure | Configure Chrony service
+  ansible.builtin.include_tasks: configure.yml
+  when: >
+    chrony_role_action in ['all', 'configure']
+  tags:
+    - chrony
+    - chrony:configure
+    - chrony:setup
+
+- name: Chrony | logrotate | Configure logrotate for Chrony service
+  ansible.builtin.include_tasks: logrotate.yml
+  when: >
+    chrony_role_action in ['all', 'configure', 'logrotate'] and
+    chrony_configure_logrotate | default(false)
+  tags:
+    - chrony
+    - chrony:logrotate
+    - chrony:maintenance
+
+- name: Chrony | upgrade | Upgrade Chrony package
+  ansible.builtin.include_tasks: upgrade.yml
+  when: >
+    chrony_role_action in ['upgrade']
+  tags:
+    - chrony
+    - chrony:upgrade
+    - chrony:maintenance
+
+- name: Chrony | test | Make sure that time is synchronized with server
+  ansible.builtin.include_tasks: test.yml
+  when: >
+    chrony_role_action in ['all', 'configure', 'logrotate', 'upgrade' ] and
+    chrony_run_test | default(false)
+  tags:
+    - always
+    - chrony
+    - chrony:test
+    - chrony:verify
